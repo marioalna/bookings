@@ -1,0 +1,11 @@
+es:
+  home:
+    description: Esta aplicación te permite gestionar reservas de recursos
+    know_more: Más información
+    log_in: Iniciar sesión
+    welcome: Bienvenido a la aplicación de reservas
+  main:
+    home: Inicio
+    reservations: Reservas
+    users: Usuarios
+    resources: Recursos

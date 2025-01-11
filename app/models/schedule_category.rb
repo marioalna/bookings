@@ -1,0 +1,2 @@
+class ScheduleCategory < ApplicationRecord
+end
