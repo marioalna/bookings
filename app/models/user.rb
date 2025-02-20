@@ -1,11 +1,10 @@
 class User < ApplicationRecord
   has_secure_password
 
-  attribute :role, :string # ?
+  attribute :role
 
   REGULAR = "regular".freeze
   ADMIN = "admin".freeze
-  SUPERADMIN = "superadmin".freeze
 
   belongs_to :account
 
@@ -22,7 +21,7 @@ class User < ApplicationRecord
     message: :invalid
   }
 
-  enum :role, { regular: 0, admin: 9, superadmin: 99 }
+  enum :role, { regular: 0, admin: 9 }
 
   before_save :downcase_attributes
 

@@ -1,0 +1,10 @@
+%tr
+  %td{class: td_class.render}
+    = image_tag resource_image(resource), class: 'h-10 w-10 rounded'
+  %td{class: td_class.render}
+    = resource.name
+  %td{class: td_class.render}
+    = resource.max_capacity
+  %td{class: td_class.render}
+    = render partial: 'shared/button_edit', locals:  {destination: edit_admin_resource_path(resource)}
+    = render partial: 'shared/button_delete', locals:  {destination: {model: [:admin, resource]} }

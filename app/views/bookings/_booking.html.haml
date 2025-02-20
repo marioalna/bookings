@@ -1,0 +1,10 @@
+%tr
+  %td{class: td_class.render}
+    = booking.start_on
+  %td{class: td_class.render}
+    = booking.schedule_category.name
+  - if can_edit?(booking)
+    %td{class: td_class.render}
+      .flex.gap-x-4.justify-end
+        = render partial: 'shared/button_edit', locals:  {destination: edit_booking_path(booking)}
+        = render partial: 'shared/button_delete', locals:  {destination: {model: booking} }

@@ -1,19 +1,20 @@
 <nav class="bg-gray-800" data-controller="navigation">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
-      <div class="flex items-center">
-        <div class="shrink-0">
-          <img class="size-8" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+      <div class="flex">
+        <div class="flex flex-shrink-0 items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 text-slate-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+          </svg>
         </div>
-        <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-4">
-            <%= render partial: "shared/menu" %>
-          </div>
+        <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+          <%= render "shared/admin_menu" if  Current.user.role == User::ADMIN %>
+          <%= render "shared/user_menu" if  Current.user.role == User::REGULAR %>
         </div>
       </div>
       <div class="hidden md:block">
         <div class="ml-4 flex items-center md:ml-6">
-          <p class="text-base/5 font-medium text-white"><%= Current.user.name %></p>
+          <p class="text-base/5 font-medium text-white"><%= Current.user.username %></p>
         </div>
       </div>
       <div class="-mr-2 flex md:hidden">
@@ -37,7 +38,8 @@
   <!-- Mobile menu, show/hide based on menu state. -->
   <div class="hidden" data-navigation-target="menu">
     <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3 flex flex-col">
-      <%= render partial: "shared/menu" %>
+      <%= render "shared/admin_menu" if  Current.user.role == User::ADMIN %>
+      <%= render "shared/user_menu" if  Current.user.role == User::REGULAR %>
     </div>
     <div class="border-t border-gray-700 pb-3 pt-4">
       <div class="flex items-center px-5">

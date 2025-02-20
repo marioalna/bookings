@@ -1,23 +1,15 @@
-mario:
-  account: account
-  name: "mario"
-  username: "mario99"
-  email: "mario@test.com"
-  role: 99
-  password_digest: <%= BCrypt::Password.create('testme', cost: 5) %>
-
 regular:
   account: account
   name: "regular name"
-  username: "regularuser"
-  email: "regular@test.com"
+  username: "regular2user"
+  email: "regular2@test.com"
   role: 0
   password_digest: <%= BCrypt::Password.create('testme', cost: 5) %>
 
-manager:
+admin:
   account: account
-  name: "manager name"
-  username: "manageruser"
-  email: "manager@test.com"
+  name: "admin name"
+  username: "admin2user"
+  email: "admin2@test.com"
   role: 9
   password_digest: <%= BCrypt::Password.create('testme', cost: 5) %>

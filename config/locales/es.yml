@@ -1,11 +1,107 @@
 es:
-  home:
-    description: Esta aplicación te permite gestionar reservas de recursos
-    know_more: Más información
-    log_in: Iniciar sesión
-    welcome: Bienvenido a la aplicación de reservas
-  main:
-    home: Inicio
-    reservations: Reservas
-    users: Usuarios
-    resources: Recursos
+  admin:
+    resources:
+      addFirst: "Añade el primer recurso"
+      created: "Recurso creado"
+      deleted: "Recurso eliminado"
+      maxCapacity: "Capacidad máxima"
+      name: "Nombre"
+      newTitle: "Nuevo recurso"
+      noResources: "No hay recursos todavía"
+      title: "Recursos"
+      updated: "Recurso actualizado"
+    scheduleCategories:
+      addFirst: "Añade el primer horario"
+      created: "Horario creado"
+      colour: "Color"
+      deleted: "Horario eliminado"
+      icon: "Icono"
+      name: "Nombre"
+      newTitle: "Nuevo horario"
+      noCategories: "No hay horarios todavía"
+      selectColour: "Elegir color"
+      title: "Horarios"
+      updated: "Horario actualizado"
+    users:
+      created: "Usuario creado"
+      deleted: "Usuario eliminado"
+      email: "Email"
+      name: "Nombre"
+      newTitle: "Nuevo usuario"
+      title: "Usuarios"
+      username: "Nombre usuario"
+      updated: "Usuario actualizado"
+  buttons:
+    cancel: "Cancelar"
+    delete: "Eliminar"
+    confirmText: "¿ Estás seguro ?"
+    disableText: "Borrando..."
+    edit: "Editar"
+    save: "Guardar"
+  bookings:
+    addFirst: "Añade una reserva."
+    noBookings: "No has hecho ninguna reserva."
+    created: "Reserva creada"
+    deleted: "Reserva eliminada"
+    name: "Nombre"
+    newTitle: "Nueva reserva"
+    startOn: "Fecha"
+    scheduleCategory: "Horario"
+    title: "Reservas"
+    updated: "Reserva actualizada"
+  date:
+    abbr_day_names:
+      - dom
+      - lun
+      - mar
+      - mié
+      - jue
+      - vie
+      - sáb
+    abbr_month_names:
+      -
+      - ene
+      - feb
+      - mar
+      - abr
+      - may
+      - jun
+      - jul
+      - ago
+      - sep
+      - oct
+      - nov
+      - dic
+    day_names:
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
+    formats:
+      month_name: "%B"
+    month_names:
+      -
+      - enero
+      - febrero
+      - marzo
+      - abril
+      - mayo
+      - junio
+      - julio
+      - agosto
+      - septiembre
+      - octubre
+      - noviembre
+      - diciembre
+  formErrors:
+    pleaseReview: "Por favor, resvise los errores."
+  menu:
+    bookings: "Reservas"
+    calendar: "Calendario"
+    resources: "Recursos"
+    scheduleCategories: "Horarios"
+    users: "Usuarios"
+    logOut: "Cerrar sesión"

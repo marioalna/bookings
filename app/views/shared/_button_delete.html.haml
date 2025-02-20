@@ -1,0 +1,5 @@
+= form_with(**destination, method: :delete, data: { turbo_confirm: I18n.t("buttons.deleteAction.confirmText"), disable_with: I18n.t("buttons.deleteAction.disableText") }) do |form|
+  %button{class: "remove inline-flex items-center px-2 py-1 border border-transparent text-xs leading-4 font-medium rounded text-red-700 bg-red-100 hover:bg-red-50 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150", type: "submit"}
+    %svg.-ml-1.mr-2.h-4.w-4{fill: "none", stroke: "currentColor", "stroke-linecap": "round", "stroke-linejoin" => "round", "stroke-width" => "2", :viewbox => "0 0 24 24"}
+      %path{:d => "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"}
+    = t('buttons.delete')
