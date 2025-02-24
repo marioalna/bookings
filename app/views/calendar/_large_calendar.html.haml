@@ -1,0 +1,6 @@
+.flex.bg-gray-200.text-xs.leading-6.text-gray-700.lg:flex-auto
+  .hidden.w-full.lg:grid.lg:grid-cols-7.lg:gap-px{class: "lg:grid-rows-#{@weeks.size}"}
+    = render partial: 'large_week_row', collection: @weeks, as: :week_row
+/ grid-rows-4
+/ grid-rows-5
+/ grid-rows-6

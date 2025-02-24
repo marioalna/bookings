@@ -17,6 +17,5 @@ Rails.application.routes.draw do
   resources :calendar, only: %i[index]
   resources :calendar_events, only: %i[index]
 
-  root "home#index"
-  # root to: "calendar#index"
+  root to: "calendar#index"
 end

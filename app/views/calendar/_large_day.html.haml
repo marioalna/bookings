@@ -1,0 +1,14 @@
+%div{class: "relative py-2 px-3 min-h-24 hover:bg-stone-200 #{day[:day] == Date.current ? "bg-blue-100" : "bg-stone-50 text-gray-500"}"}
+  - if day[:day].past?
+    .flex.justify-between.items-center
+      %time{class: "#{"flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" if day[:day] == Date.current}", datetime: "#{day.to_s}"}
+        = day[:day].strftime('%d')
+    %ol.mt-2
+      = render partial: 'calendar/large_show_event', collection: day[:bookings], as: :result
+  - else
+    = link_to new_booking_path(date: day[:day]), data: { turbo_frame: "modal" } do
+      .flex.justify-between.items-center
+        %time{class: "#{"flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" if day[:day] == Date.current}", datetime: "#{day.to_s}"}
+          = day[:day].strftime('%d')
+      %ol.mt-2
+        = render partial: 'calendar/large_show_event', collection: day[:bookings], as: :result

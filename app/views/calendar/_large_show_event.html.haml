@@ -1,0 +1,4 @@
+%li
+  %p.text-ellipsis.overflow-hidden.whitespace-nowrap
+    = content_tag :span, class: "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-#{result.schedule_category_colour}-100 text-#{result.schedule_category_colour}-800" do
+      = "#{result.schedule_category_name} #{result.participants}"

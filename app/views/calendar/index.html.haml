@@ -1,0 +1,27 @@
+.mt-6.shadow.ring-1.ring-black.ring-opacity-5.lg:flex.lg:flex-auto.lg:flex-col
+  .grid.grid-cols-7.gap-px.border-b.border-gray-300.bg-gray-200.text-center.text-xs.font-semibold.leading-6.text-gray-700.lg:flex-none
+    .bg-white.py-2
+      L
+      %span.sr-only.sm:not-sr-only> un
+    .bg-white.py-2
+      M
+      %span.sr-only.sm:not-sr-only> ar
+    .bg-white.py-2
+      X
+      %span.sr-only.sm:not-sr-only> ie
+    .bg-white.py-2
+      J
+      %span.sr-only.sm:not-sr-only> ue
+    .bg-white.py-2
+      V
+      %span.sr-only.sm:not-sr-only> ie
+    .bg-white.py-2
+      S
+      %span.sr-only.sm:not-sr-only> áb
+    .bg-white.py-2
+      D
+      %span.sr-only.sm:not-sr-only> om
+  = render 'calendar/large_calendar'
+  = render 'calendar/mid_calendar'
+%ol.mt-10.divide-y.divide-gray-100.overflow-hidden.rounded-lg.bg-white.text-sm
+  = turbo_frame_tag 'calendar_events_mid'
