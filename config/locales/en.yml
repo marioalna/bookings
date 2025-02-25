@@ -41,6 +41,7 @@ en:
     save: "Save"
   bookings:
     addFirst: "Add first booking."
+    allUsers: "All users"
     noBookings: "There is no bookings yet"
     created: "Booking created"
     deleted: "Booking deleted"
