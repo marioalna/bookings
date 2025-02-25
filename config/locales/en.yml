@@ -46,10 +46,36 @@ en:
     deleted: "Booking deleted"
     name: "Name"
     newTitle: "New booking"
+    participants: "Num. diners"
     startOn: "Start on"
     scheduleCategory: "Schedule"
     updated: "Booking updated"
+    user: "User"
+  calendar:
+    monday:
+      short: "M"
+      long: "Mon"
+    tuesday:
+      short: "T"
+      long: "Tue"
+    wednesday:
+      short: "W"
+      long: "Wed"
+    thursday:
+      short: "Th"
+      long: "Thu"
+    friday:
+      short: "F"
+      long: "Fri"
+    saturday:
+      short: "S"
+      long: "Sat"
+    sunday:
+      short: "Su"
+      long: "Sun"
+    title: "Calendar"
   date:
+    default: "%-d-%m-%Y"
     formats:
       month_name: "%B"
   formErrors:

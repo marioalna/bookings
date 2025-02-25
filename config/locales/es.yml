@@ -45,10 +45,35 @@ es:
     deleted: "Reserva eliminada"
     name: "Nombre"
     newTitle: "Nueva reserva"
+    participants: "N° comensales"
     startOn: "Fecha"
     scheduleCategory: "Horario"
     title: "Reservas"
     updated: "Reserva actualizada"
+    user: "Usuario"
+  calendar:
+    monday:
+      short: "L"
+      long: "Lun"
+    tuesday:
+      short: "M"
+      long: "Mar"
+    wednesday:
+      short: "X"
+      long: "Mié"
+    thursday:
+      short: "J"
+      long: "Jue"
+    friday:
+      short: "V"
+      long: "Vie"
+    saturday:
+      short: "S"
+      long: "Sáb"
+    sunday:
+      short: "D"
+      long: "Dom"
+    title: "Calendario"
   date:
     abbr_day_names:
       - dom
@@ -81,6 +106,7 @@ es:
       - viernes
       - sábado
     formats:
+      default: "%-d-%m-%Y"
       month_name: "%B"
     month_names:
       -

@@ -1,26 +1,40 @@
+= render 'shared/header', title: "" do
+  .flex.gap-x-4.justify-between.items-center.mr-6
+    = link_to calendar_index_path(date: @date - 1.month), class: "w-5 h-5" do
+      = image_tag 'icons/left_arrow.svg'
+    = l @date, format: :month_name
+    = link_to calendar_index_path(date: @date + 1.month), class: "w-5 h-5" do
+      = image_tag 'icons/right_arrow.svg'
 .mt-6.shadow.ring-1.ring-black.ring-opacity-5.lg:flex.lg:flex-auto.lg:flex-col
   .grid.grid-cols-7.gap-px.border-b.border-gray-300.bg-gray-200.text-center.text-xs.font-semibold.leading-6.text-gray-700.lg:flex-none
     .bg-white.py-2
-      L
-      %span.sr-only.sm:not-sr-only> un
+      = t 'calendar.monday.short'
+      %span.sr-only.sm:not-sr-only
+        = t 'calendar.monday.long'
     .bg-white.py-2
-      M
-      %span.sr-only.sm:not-sr-only> ar
+      = t 'calendar.tuesday.short'
+      %span.sr-only.sm:not-sr-only
+        = t 'calendar.tuesday.long'
     .bg-white.py-2
-      X
-      %span.sr-only.sm:not-sr-only> ie
+      = t 'calendar.wednesday.short'
+      %span.sr-only.sm:not-sr-only 
+        = t 'calendar.wednesday.long'
     .bg-white.py-2
-      J
-      %span.sr-only.sm:not-sr-only> ue
+      = t 'calendar.thursday.short'
+      %span.sr-only.sm:not-sr-only 
+        = t 'calendar.thursday.long'
     .bg-white.py-2
-      V
-      %span.sr-only.sm:not-sr-only> ie
+      = t 'calendar.friday.short'
+      %span.sr-only.sm:not-sr-only 
+        = t 'calendar.friday.long'
     .bg-white.py-2
-      S
-      %span.sr-only.sm:not-sr-only> áb
+      = t 'calendar.saturday.short'
+      %span.sr-only.sm:not-sr-only
+        = t 'calendar.saturday.long'
     .bg-white.py-2
-      D
-      %span.sr-only.sm:not-sr-only> om
+      = t 'calendar.sunday.short'
+      %span.sr-only.sm:not-sr-only 
+        = t 'calendar.sunday.long'
   = render 'calendar/large_calendar'
   = render 'calendar/mid_calendar'
 %ol.mt-10.divide-y.divide-gray-100.overflow-hidden.rounded-lg.bg-white.text-sm

@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :sessions, dependent: :destroy
 
-  validates :username, presence: true, uniqueness: true, length: { in: 3..15 },
+  validates :name, presence: true
+  validates :username, uniqueness: true, length: { in: 3..25 },
                        format: {
                          with: /\A[a-z0-9A-Z]+\z/,
                          message: :invalid

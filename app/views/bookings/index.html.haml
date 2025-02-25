@@ -1,9 +1,9 @@
 = render 'shared/header', title: t('bookings.title') do
   .flex.gap-x-4.justify-between.items-center.mr-6
-    = link_to bookings_path(date: @start_date - 1.month), class: "w-5 h-5" do
+    = link_to bookings_path(date: @start_date - 1.month, user_id: params[:user_id]), class: "w-5 h-5" do
       = image_tag 'icons/left_arrow.svg'
     = l @start_date, format: :month_name
-    = link_to bookings_path(date: @start_date + 1.month), class: "w-5 h-5" do
+    = link_to bookings_path(date: @start_date + 1.month, user_id: params[:user_id]), class: "w-5 h-5" do
       = image_tag 'icons/right_arrow.svg'
   = render 'shared/button_new',  destination: new_booking_path, title: t('bookings.newTitle')
 - if @bookings.any?
@@ -14,6 +14,10 @@
           = t 'bookings.startOn'
         %th{class: th_class.render}
           = t 'bookings.scheduleCategory'
+        %th{class: th_class.render}
+          = t 'bookings.user'
+        %th{class: th_class.render}
+          = t 'bookings.participants'
         %th{class: th_class.render}
     %tbody
       = render partial: 'bookings/booking', collection: @bookings

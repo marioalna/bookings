@@ -1,6 +1,6 @@
 regular:
   account: account
-  name: "regular name"
+  name: "regular name2"
   username: "regular2user"
   email: "regular2@test.com"
   role: 0
@@ -8,7 +8,7 @@ regular:
 
 admin:
   account: account
-  name: "admin name"
+  name: "admin name2"
   username: "admin2user"
   email: "admin2@test.com"
   role: 9

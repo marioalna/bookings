@@ -3,9 +3,9 @@ class BookingsController < ApplicationController
   before_action :find_schedule_categories, only: %i[new create edit update]
   before_action :find_resources, only: %i[new create edit update]
   before_action :find_date, only: %i[index]
+  before_action :find_bookings, only: %i[index]
 
   def index
-    @bookings = Current.account.bookings.where(start_on: @start_date..@end_date).order(:start_on, :schedule_category_id)
   end
 
   def new
@@ -93,5 +93,13 @@ class BookingsController < ApplicationController
     def find_date
       @start_date = booking_date.beginning_of_month
       @end_date = booking_date.end_of_month
+    end
+
+    def find_bookings
+      @bookings = if params[:user_id].present?
+        Current.account.bookings.where(start_on: @start_date..@end_date, user_id: params[:user_id]).order(:start_on, :schedule_category_id)
+      else
+        Current.account.bookings.where(start_on: @start_date..@end_date).order(:start_on, :schedule_category_id)
+      end
     end
 end
