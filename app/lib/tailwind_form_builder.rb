@@ -87,7 +87,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
                                                                    label_text
                                                                  end)
                                                 @template.concat(@template.content_tag(:span,
-                                                                                       class: "mt-1 flex items-center text-sm text-gray-500") do
+                                                                                       class: "mt-2 flex items-center text-sm text-gray-500") do
                                                                    description_text
                                                                  end)
                                                 @template.concat(@template.content_tag(:span,
@@ -128,7 +128,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
     error = html_options.fetch(:error, any_errors?(name))
     style = html_options.fetch(:class, "")
     html_options.merge!(class: "p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full text-xl lg:text-sm border-gray-300 rounded-md "+ style)
-    @template.content_tag(:div, { class: "form-element pt-1", id: "field-#{name}" }) do
+    @template.content_tag(:div, { class: "form-element mt-2", id: "field-#{name}" }) do
       @template.concat(collection_select(name, collection, value_method, text_method, options, html_options))
       @template.concat(hint_message(message, error))
     end
@@ -255,7 +255,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
 
       @template.content_tag(:div, { class: "form-element pt-6", id: "field-#{name}" }) do
         @template.concat(label(label_text, { class: "text-xl lg:text-sm font-medium text-gray-700" }))
-        @template.concat(@template.content_tag(:div, { class: "relative mt-1" }) do
+        @template.concat(@template.content_tag(:div, { class: "relative mt-2" }) do
           @template.concat(show_icon(block)) if block.present?
           @template.concat(send(field_type, name,
                                 { class: "p-2 shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 text-xl lg:text-sm border-gray-300 rounded-md" + (block.present? ? " pl-10" : "") + (error ? " invalid-input" : "") }.merge(options)))
@@ -272,7 +272,7 @@ class TailwindFormBuilder < ActionView::Helpers::FormBuilder
 
       @template.content_tag(:div, { class: "form-element pt-6", id: "field-#{name}" }) do
         @template.concat(label(label_text, { class: "text-xl lg:text-sm font-medium text-gray-700" }))
-        @template.concat(@template.content_tag(:div, { class: "relative mt-1" }) do
+        @template.concat(@template.content_tag(:div, { class: "relative mt-2" }) do
           @template.concat(show_icon(block)) if block.present?
           @template.concat(send(field_type, name, options,
                                 { class: "p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-xl lg:text-sm border-gray-300 rounded-md" + (block.present? ? " pl-10" : "") + (error ? " invalid-input" : "") }.merge(options)))

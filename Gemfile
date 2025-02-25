@@ -20,6 +20,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 gem "sqlite3", ">= 2.1"
+gem 'requestjs-rails'
 gem "tailwindcss-rails"
 gem "turbo-rails"
 
@@ -29,15 +30,12 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem 'class_variants'
-
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster", require: false
 
 group :development, :test do
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-  gem "hotwire-spark"
   gem "faker"
   gem "parallel_tests"
   gem "rubocop-rails-omakase", require: false
