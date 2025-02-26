@@ -3,12 +3,7 @@ import { post } from "@rails/request.js";
 
 // Connects to data-controller="booking"
 export default class extends Controller {
-  static targets = [
-    "startOn",
-    "participants",
-    "scheduleCategoryId",
-    "bookingImage",
-  ];
+  static targets = ["startOn", "participants", "scheduleCategoryId"];
   static values = { resources: Object };
 
   connect() {
@@ -21,10 +16,8 @@ export default class extends Controller {
     const index = this.resourcesAssigned.indexOf(id);
 
     if (index !== -1) {
-      this.bookingImageTarget.classList.remove("border-4", "border-blue-500");
       this.resourcesAssigned.splice(index, 1);
     } else {
-      this.bookingImageTarget.classList.add("border-4", "border-blue-500");
       this.resourcesAssigned.push(id);
     }
 
@@ -35,10 +28,9 @@ export default class extends Controller {
     const pending = this.participantsTarget.value - this.totalAssigned();
     if (pending <= 0) {
       console.log("Ya tienes suficientes recursos asignados");
-      console.log(this.bookingImageTarget);
     } else {
       console.log(
-        `Tienes pendiente asignar espacio para ${pending} comensales`
+        `Tienes pendiente asignar espacio para ${pending} comensales`,
       );
     }
   }
@@ -54,21 +46,21 @@ export default class extends Controller {
     return assigned;
   }
 
-  //async update() {
-  //  const data = {
-  //    start_on: this.startOnTarget.value,
-  //    schedule_category_id: this.scheduleCategoryIdTarget.value,
-  //  };
-  //
-  //  const resp = await post("/bookings/check", {
-  //    headers: { Accept: "text/vnd.turbo-stream.html" },
-  //    responseKind: "turbo-stream",
-  //    body: JSON.stringify(data),
-  //  });
-  //
-  //  if (resp.ok) {
-  //    const text = await resp.text;
-  //    Turbo.renderStreamMessage(text);
-  //  }
-  //}
+  async update() {
+    const data = {
+      start_on: this.startOnTarget.value,
+      schedule_category_id: this.scheduleCategoryIdTarget.value,
+    };
+
+    const resp = await post("/bookings/check", {
+      headers: { Accept: "text/vnd.turbo-stream.html" },
+      responseKind: "turbo-stream",
+      body: JSON.stringify(data),
+    });
+
+    if (resp.ok) {
+      const text = await resp.text;
+      Turbo.renderStreamMessage(text);
+    }
+  }
 }

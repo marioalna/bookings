@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
       redirect_to bookings_path, notice: t("booking.created")
     else
       available_resources
+      render "new", status: :unprocessable_entity
     end
   end
 
