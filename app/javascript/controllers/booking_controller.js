@@ -3,7 +3,12 @@ import { post } from "@rails/request.js";
 
 // Connects to data-controller="booking"
 export default class extends Controller {
-  static targets = ["startOn", "participants", "scheduleCategoryId"];
+  static targets = [
+    "startOn",
+    "participants",
+    "scheduleCategoryId",
+    "bookingImage",
+  ];
   static values = { resources: Object };
 
   connect() {
@@ -13,6 +18,16 @@ export default class extends Controller {
   toggle(event) {
     const id = event.params.id;
     const resource = this.resourcesValue[id];
+    const index = this.resourcesAssigned.indexOf(id);
+
+    if (index !== -1) {
+      this.bookingImageTarget.classList.remove("border-4", "border-blue-500");
+      this.resourcesAssigned.splice(index, 1);
+    } else {
+      this.bookingImageTarget.classList.add("border-4", "border-blue-500");
+      this.resourcesAssigned.push(id);
+    }
+
     this.assignedDifference();
   }
 
@@ -20,12 +35,15 @@ export default class extends Controller {
     const pending = this.participantsTarget.value - this.totalAssigned();
     if (pending <= 0) {
       console.log("Ya tienes suficientes recursos asignados");
+      console.log(this.bookingImageTarget);
     } else {
       console.log(
-        `Tienes pendiente asignar espacio para ${pending} comensales`,
+        `Tienes pendiente asignar espacio para ${pending} comensales`
       );
     }
   }
+
+  removeViewValues() {}
 
   totalAssigned() {
     let assigned = 0;
