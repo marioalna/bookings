@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   before_action :find_resources, only: %i[new create edit update]
   before_action :find_date, only: %i[index]
   before_action :find_bookings, only: %i[index]
+  before_action :current_info, only: %i[new create edit update]
 
   def index
   end
@@ -81,6 +82,20 @@ class BookingsController < ApplicationController
     def find_resources
       @resources = Current.account.resources
         .includes(:resource_bookings).order(max_capacity: :desc)
+    end
+
+    def current_info
+      @num_bookings = 0
+      @participants = 0
+
+      schedule_category_id = @booking.present? ? @booking.schedule_category_id : @schedule_categories.first[0]
+      @schedule_name = Current.account.schedule_categories.find(schedule_category_id).name
+
+      bookings = Current.account.bookings.where(start_on: booking_date, schedule_category_id:)
+      bookings.each do |booking|
+        @num_bookings += 1
+        @participants += booking.participants
+      end
     end
 
     def booking_date

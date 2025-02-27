@@ -1,5 +1,5 @@
 booking1_sc1:
-  user: mario
+  user: admin
   schedule_category: schedule_category
   start_on: <%= Date.current.beginning_of_month %>
   participants: 9
@@ -17,13 +17,13 @@ booking2_sc2:
   participants: 7
 
 booking3_sc2:
-  user: mario
+  user: admin
   schedule_category: schedule_category2
   start_on: <%= Date.current.beginning_of_month + 14.days %>
   participants: 27
 
 booking4_sc1:
-  user: mario
+  user: admin
   schedule_category: schedule_category
   start_on: <%= Date.current.beginning_of_month + 4.days  %>
   participants: 11

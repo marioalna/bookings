@@ -41,9 +41,14 @@ en:
     save: "Save"
   bookings:
     addFirst: "Add first booking."
+    assign:
+      enough: "You have enough resources assigned."
+      exceeded: "You exceed the limit of diners."
+      notEnough: "You have X diners pending to assign."
     allUsers: "All users"
     noBookings: "There is no bookings yet"
     created: "Booking created"
+    currentInfo: "For %{schedule_name} schedule there are %{num_reservas} bookings with %{participants} diners."
     deleted: "Booking deleted"
     name: "Name"
     newTitle: "New booking"

@@ -3,8 +3,8 @@ import { post } from "@rails/request.js";
 
 // Connects to data-controller="booking"
 export default class extends Controller {
-  static targets = ["startOn", "participants", "scheduleCategoryId"];
-  static values = { resources: Object };
+  static targets = ["startOn", "participants", "scheduleCategoryId", "message"];
+  static values = { resources: Object, capacity: Number, translations: Object };
 
   connect() {
     this.resourcesAssigned = [];
@@ -25,17 +25,43 @@ export default class extends Controller {
   }
 
   assignedDifference() {
-    const pending = this.participantsTarget.value - this.totalAssigned();
-    if (pending <= 0) {
-      console.log("Ya tienes suficientes recursos asignados");
-    } else {
-      console.log(
-        `Tienes pendiente asignar espacio para ${pending} comensales`,
+    if (this.participantsTarget.value > this.capacityValue) {
+      this.removeClassList();
+      this.messageTarget.innerHTML =
+        this.translationsValue["exceeded"].translation;
+      this.messageTarget.classList.remove();
+      this.messageTarget.classList.add("text-red-600");
+      this.messageTarget.innerHTML = this.messageTarget.innerHTML.replace(
+        "XX",
+        `${this.capacityValue}`
       );
+      this.messageTarget.innerHTML = this.messageTarget.innerHTML.replace(
+        "YY",
+        `${Math.abs(this.capacityValue - this.participantsTarget.value)}`
+      );
+    } else {
+      this.calculatePending();
     }
   }
 
-  removeViewValues() {}
+  calculatePending() {
+    const pending = this.participantsTarget.value - this.totalAssigned();
+    if (pending > 0) {
+      this.removeClassList();
+      this.messageTarget.classList.add("text-yellow-600");
+      this.messageTarget.innerHTML =
+        this.translationsValue["notEnough"].translation;
+      this.messageTarget.innerHTML = this.messageTarget.innerHTML.replace(
+        "X",
+        `${pending}`
+      );
+    } else {
+      this.removeClassList();
+      this.messageTarget.innerHTML =
+        this.translationsValue["enough"].translation;
+      this.messageTarget.classList.add("text-green-600");
+    }
+  }
 
   totalAssigned() {
     let assigned = 0;
@@ -44,6 +70,12 @@ export default class extends Controller {
     });
 
     return assigned;
+  }
+
+  removeClassList() {
+    while (this.messageTarget.classList.length > 0) {
+      this.messageTarget.classList.remove(this.messageTarget.classList.item(0));
+    }
   }
 
   async update() {
