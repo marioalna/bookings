@@ -5,13 +5,13 @@ booking1_sc1:
   participants: 9
 
 booking5_sc1:
-  user: manager
+  user: regular
   schedule_category: schedule_category
   start_on: <%= Date.current.beginning_of_month %>
   participants: 13
 
 booking2_sc2:
-  user: manager
+  user: regular
   schedule_category: schedule_category2
   start_on: <%= Date.current.beginning_of_month + 4.days %>
   participants: 7

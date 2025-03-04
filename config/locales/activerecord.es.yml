@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    attributes:
+      booking:
+        start_on: "Fecha"
+        schedule_category_id: "Horario"
+        participants: "Comensales"
+      user:
+        name: "Nombre"
+        username: "Nombre usuario"
+        password: "Contraseña"
+      schedule_category:
+        name: "Nombre"
+      resource:
+        name: "Nombre"
+        max_capacity: "Capacidad máxima"
+        photo: "Foto"

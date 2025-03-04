@@ -2,7 +2,8 @@
   %td{class: td_class.render}
     = image_tag resource_image(resource), class: 'h-10 w-10 rounded'
   %td{class: td_class.render}
-    = resource.name
+    = link_to bookings_path(resource_id: resource.id), class: link_class.render do
+      = resource.name
   %td{class: td_class.render}
     = resource.max_capacity
   %td{class: td_class.render}

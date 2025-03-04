@@ -46,6 +46,7 @@ en:
       exceeded: "You exceed the limit of diners."
       notEnough: "You have X diners pending to assign."
     allUsers: "All users"
+    allResources: "All resources"
     noBookings: "There is no bookings yet"
     created: "Booking created"
     currentInfo: "For %{schedule_name} schedule there are %{num_reservas} bookings with %{participants} diners."

@@ -112,8 +112,13 @@ class BookingsController < ApplicationController
     end
 
     def find_bookings
-      @bookings = if params[:user_id].present?
+      user_id = Current.account.users.find_by(id: params[:user_id])&.id
+      resource_id = Current.account.resources.find_by(id: params[:resource_id])&.id
+
+      @bookings = if user_id.present?
         Current.account.bookings.where(start_on: @start_date..@end_date, user_id: params[:user_id]).order(:start_on, :schedule_category_id)
+      elsif resource_id.present?
+        Current.account.bookings.joins(:resources).where(start_on: @start_date..@end_date, resources: { id: resource_id }).order(:start_on, :schedule_category_id)
       else
         Current.account.bookings.where(start_on: @start_date..@end_date).order(:start_on, :schedule_category_id)
       end

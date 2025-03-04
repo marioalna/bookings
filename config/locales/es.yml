@@ -45,6 +45,7 @@ es:
       exceeded: "El límite de comensales es XX, lo excedes por YY comensales."
       notEnough: "Tienes pendiente asignar espacio para X comensales."
     allUsers: "Cualquier usuario"
+    allResources: "Cualquier recurso"
     noBookings: "No has hecho ninguna reserva."
     created: "Reserva creada"
     currentInfo: "Para el horario %{schedule_name} hay un total de %{num_bookings} reservas y %{participants} comensales."
