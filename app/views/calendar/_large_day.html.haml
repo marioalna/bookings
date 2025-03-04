@@ -7,8 +7,9 @@
       = render partial: 'calendar/large_show_event', collection: day[:bookings], as: :result
   - else
     = link_to new_booking_path(date: day[:day]) do
-      .flex.justify-between.items-center
-        %time{class: "#{"flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" if day[:day] == Date.current}", datetime: "#{day.to_s}"}
-          = day[:day].strftime('%d')
-      %ol.mt-2
-        = render partial: 'calendar/large_show_event', collection: day[:bookings], as: :result
+      .absolute.h-full.w-full
+        .flex.justify-between
+          %time{class: "#{"flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white" if day[:day] == Date.current}", datetime: "#{day.to_s}"}
+            = day[:day].strftime('%d')
+        %ol.relative.mt-2
+          = render partial: 'calendar/large_show_event', collection: day[:bookings], as: :result

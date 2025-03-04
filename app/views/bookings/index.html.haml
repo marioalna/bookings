@@ -1,36 +1,39 @@
-= render 'shared/header', title: t('bookings.title') do
-  .flex.gap-x-4.justify-end.items-center
-    - if params[:user_id].present?
-      = link_to bookings_path(date: @start_date), class: link_class.render do
-        = t 'bookings.allUsers'
-    - if params[:resource_id].present?
-      = link_to bookings_path(date: @start_date), class: link_class.render do
-        = t 'bookings.allResources'
-    .flex.gap-x-4.justify-between.items-center.mr-6
-      = link_to bookings_path(date: @start_date - 1.month, user_id: params[:user_id], resource_id: params[:resource_id]), class: "w-5 h-5" do
-        = image_tag 'icons/left_arrow.svg'
-      = l @start_date, format: :month_name
-      = link_to bookings_path(date: @start_date + 1.month, user_id: params[:user_id], resource_id: params[:resource_id]), class: "w-5 h-5" do
-        = image_tag 'icons/right_arrow.svg'
-    = render 'shared/button_new',  destination: new_booking_path, title: t('bookings.newTitle')
-- if @bookings.any?
-  %table.mt-6.min-w-full.table-stripped
-    %thead
-      %tr
-        %th{class: th_class.render}
-          = t 'bookings.startOn'
-        %th{class: th_class.render}
-          = t 'bookings.scheduleCategory'
-        %th{class: th_class.render}
-          = t 'bookings.user'
-        %th{class: th_class.render}
-          = t 'bookings.participants'
-        %th{class: th_class.render}
-    %tbody
-      = render partial: 'bookings/booking', collection: @bookings
-- else
-  .mt-6
-    = render 'shared/notification', {title: t('bookings.noBookings')} do
-      .mt-4
-        .-mx-2.flex{class: "-my-1.5"}
-          = link_to t('bookings.addFirst'), new_booking_path, class: "px-2 py-1.5 rounded-md text-sm leading-5 font-medium text-blue-800 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 transition ease-in-out duration-150", target: '_top'
+.divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
+  .px-4.py-5.sm:px-6
+    = render 'shared/header', title: t('bookings.title') do
+      .flex.gap-x-4.justify-end.items-center
+        - if params[:user_id].present?
+          = link_to bookings_path(date: @start_date), class: link_class.render do
+            = t 'bookings.allUsers'
+        - if params[:resource_id].present?
+          = link_to bookings_path(date: @start_date), class: link_class.render do
+            = t 'bookings.allResources'
+        .flex.gap-x-4.justify-between.items-center.mr-6
+          = link_to bookings_path(date: @start_date - 1.month, user_id: params[:user_id], resource_id: params[:resource_id]), class: "w-5 h-5" do
+            = image_tag 'icons/left_arrow.svg'
+          = l @start_date, format: :month_name
+          = link_to bookings_path(date: @start_date + 1.month, user_id: params[:user_id], resource_id: params[:resource_id]), class: "w-5 h-5" do
+            = image_tag 'icons/right_arrow.svg'
+        = render 'shared/button_new',  destination: new_booking_path, title: t('bookings.newTitle')
+  .px-4.py-5.sm:p-6
+    - if @bookings.any?
+      %table.mt-6.min-w-full.table-stripped
+        %thead
+          %tr
+            %th{class: th_class.render}
+              = t 'bookings.startOn'
+            %th{class: th_class.render}
+              = t 'bookings.scheduleCategory'
+            %th{class: th_class.render}
+              = t 'bookings.user'
+            %th{class: th_class.render(text_align: :right)}
+              = t 'bookings.participants'
+            %th{class: th_class.render}
+        %tbody
+          = render partial: 'bookings/booking', collection: @bookings
+    - else
+      .mt-6
+        = render 'shared/notification', {title: t('bookings.noBookings')} do
+          .mt-4
+            .-mx-2.flex{class: "-my-1.5"}
+              = link_to t('bookings.addFirst'), new_booking_path, class: "px-2 py-1.5 rounded-md text-sm leading-5 font-medium text-blue-800 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 transition ease-in-out duration-150", target: '_top'

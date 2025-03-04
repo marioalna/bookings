@@ -2,11 +2,12 @@
   %td{class: td_class.render}
     = I18n.l(booking.start_on)
   %td{class: td_class.render}
-    = render partial: "shared/booking_card", locals: {schedule_category_name: booking.schedule_category.name, schedule_category_colour: booking.schedule_category.colour, participants: nil}
+    %ol
+      = render partial: "shared/booking_card", locals: {schedule_category_name: booking.schedule_category.name, schedule_category_colour: booking.schedule_category.colour, participants: nil}
   %td{class: td_class.render}
     = link_to bookings_path(user_id: booking.user_id), class: link_class.render do
       = booking.user.name
-  %td{class: td_class.render}
+  %td{class: td_class.render(text_align: :right)}
     = booking.participants
   - if can_edit?(booking)
     %td{class: td_class.render}
