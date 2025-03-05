@@ -4,7 +4,7 @@
   %td{class: td_class.render}
     = link_to bookings_path(resource_id: resource.id), class: link_class.render do
       = resource.name
-  %td{class: td_class.render}
+  %td{class: td_class.render(text_align: :right)}
     = resource.max_capacity
   %td{class: td_class.render}
     .flex.gap-x-4.justify-end

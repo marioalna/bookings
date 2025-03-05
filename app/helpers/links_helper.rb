@@ -40,20 +40,6 @@ module LinksHelper
     )
   end
 
-  def edit_class
-    class_variants(
-      base: "inline-flex mr-2 items-center px-2 py-1 text-xs leading-4 font-medium rounded text-teal-700 bg-teal-100 hover:bg-teal-50 focus:outline-none focus:shadow-outline-teal active:bg-teal-200 transition ease-in-out duration-150",
-      variants: {
-        border: {
-          transparent: "border border-transparent focus:border-teal-300"
-        }
-      },
-      defaults: {
-        border: :transparent
-      }
-    )
-  end
-
   def sidebar_icon_class
     class_variants(
       base: "mr-3 h-6 w-6 text-hq-blue-700 group-hover:text-hq-blue-600 ease-in-out duration-150"

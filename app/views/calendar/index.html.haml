@@ -1,27 +1,29 @@
-= render 'shared/header', title: "" do
-  .flex.gap-x-4.justify-between.items-center.mr-6
-    = link_to calendar_index_path(date: @date - 1.month), class: "w-5 h-5" do
-      = image_tag 'icons/left_arrow.svg'
-    = l @date, format: :month_name
-    = link_to calendar_index_path(date: @date + 1.month), class: "w-5 h-5" do
-      = image_tag 'icons/right_arrow.svg'
-.mt-6.shadow.lg:flex.lg:flex-auto.lg:flex-col
-  .grid.grid-cols-7.gap-px.border-b.border-gray-300.bg-gray-200.text-center.text-xs.font-semibold.leading-6.text-gray-700.lg:flex-none
-    .bg-white.py-2
-      = t 'calendar.monday.long'
-    .bg-white.py-2
-      = t 'calendar.tuesday.long'
-    .bg-white.py-2
-      = t 'calendar.wednesday.long'
-    .bg-white.py-2
-      = t 'calendar.thursday.long'
-    .bg-white.py-2
-      = t 'calendar.friday.long'
-    .bg-white.py-2
-      = t 'calendar.saturday.long'
-    .bg-white.py-2
-      = t 'calendar.sunday.long'
-  = render 'calendar/large_calendar'
-  = render 'calendar/mid_calendar'
-%ol.mt-10.divide-y.divide-gray-100.overflow-hidden.rounded-lg.bg-white.text-sm
-  = turbo_frame_tag 'calendar_events_mid'
+.divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
+  .px-4.py-5.sm:px-6
+    = render 'shared/header', title: (l @date, format: :month_year) do
+      .flex.gap-x-4.justify-between.items-center.mr-6
+        = link_to calendar_index_path(date: @date - 1.month), class: "w-5 h-5" do
+          = image_tag 'icons/left_arrow.svg'
+        = link_to calendar_index_path(date: @date + 1.month), class: "w-5 h-5" do
+          = image_tag 'icons/right_arrow.svg'
+.px-4.py-5.sm:p-6
+  .mt-2.shadow.lg:flex.lg:flex-auto.lg:flex-col
+    .grid.grid-cols-7.gap-px.border-b.border-gray-300.bg-gray-200.text-center.text-xs.font-semibold.leading-6.text-gray-700.lg:flex-none
+      .bg-white.py-2
+        = t 'calendar.monday.long'
+      .bg-white.py-2
+        = t 'calendar.tuesday.long'
+      .bg-white.py-2
+        = t 'calendar.wednesday.long'
+      .bg-white.py-2
+        = t 'calendar.thursday.long'
+      .bg-white.py-2
+        = t 'calendar.friday.long'
+      .bg-white.py-2
+        = t 'calendar.saturday.long'
+      .bg-white.py-2
+        = t 'calendar.sunday.long'
+    = render 'calendar/large_calendar'
+    = render 'calendar/mid_calendar'
+  %ol.mt-10.divide-y.divide-gray-100.overflow-hidden.rounded-lg.bg-white.text-sm
+    = turbo_frame_tag 'calendar_events_mid'

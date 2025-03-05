@@ -1,20 +1,23 @@
-= render 'shared/header', title: t('admin.resources.title') do
-  = render 'shared/button_new',  destination: new_admin_resource_path, title: t('admin.resources.newTitle')
-- if @resources.any?
-  %table.mt-6.min-w-full.table-stripped
-    %thead
-      %tr
-        %th{class: th_class.render}
-        %th{class: th_class.render}
-          = t 'admin.resources.name'
-        %th{class: th_class.render}
-          = t 'admin.resources.maxCapacity'
-        %th{class: th_class.render}
-    %tbody
-      = render partial: 'admin/resources/resource', collection: @resources
-- else
-  .mt-6
-    = render 'shared/notification', {title: t('admin.resources.noResources')} do
-      .mt-4
-        .-mx-2.flex{class: "-my-1.5"}
-          = link_to t('admin.resources.addFirst'), new_admin_resource_path, class: "px-2 py-1.5 rounded-md text-sm leading-5 font-medium text-blue-800 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 transition ease-in-out duration-150", target: '_top'
+.divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
+  .px-4.py-5.sm:px-6
+    = render 'shared/header', title: t('admin.resources.title') do
+      = render 'shared/button_new',  destination: new_admin_resource_path, title: t('admin.resources.newTitle')
+  .px-4.py-5.sm:p-6
+    - if @resources.any?
+      %table.mt-2.min-w-full.table-stripped
+        %thead
+          %tr
+            %th{class: th_class.render}
+            %th{class: th_class.render}
+              = t 'admin.resources.name'
+            %th{class: th_class.render(text_align: :right)}
+              = t 'admin.resources.maxCapacity'
+            %th{class: th_class.render}
+        %tbody
+          = render partial: 'admin/resources/resource', collection: @resources
+    - else
+      .mt-6
+        = render 'shared/notification', {title: t('admin.resources.noResources')} do
+          .mt-4
+            .-mx-2.flex{class: "-my-1.5"}
+              = link_to t('admin.resources.addFirst'), new_admin_resource_path, class: "px-2 py-1.5 rounded-md text-sm leading-5 font-medium text-blue-800 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 transition ease-in-out duration-150", target: '_top'

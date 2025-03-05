@@ -17,7 +17,7 @@
         = render 'shared/button_new',  destination: new_booking_path, title: t('bookings.newTitle')
   .px-4.py-5.sm:p-6
     - if @bookings.any?
-      %table.mt-6.min-w-full.table-stripped
+      %table.mt-2.min-w-full.table-stripped
         %thead
           %tr
             %th{class: th_class.render}

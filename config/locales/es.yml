@@ -34,8 +34,9 @@ es:
   buttons:
     cancel: "Cancelar"
     delete: "Eliminar"
-    confirmText: "¿ Estás seguro ?"
-    disableText: "Borrando..."
+    deleteAction:
+      confirmText: "¿ Estás seguro ?"
+      disableText: "Borrando..."
     edit: "Editar"
     save: "Guardar"
   bookings:
@@ -115,20 +116,21 @@ es:
     formats:
       default: "%-d-%m-%Y"
       month_name: "%B"
+      month_year: "%B %Y"
     month_names:
       -
-      - enero
-      - febrero
-      - marzo
-      - abril
-      - mayo
-      - junio
-      - julio
-      - agosto
-      - septiembre
-      - octubre
-      - noviembre
-      - diciembre
+      - Enero
+      - Febrero
+      - Marzo
+      - Abril
+      - Mayo
+      - Junio
+      - Julio
+      - Agosto
+      - Septiembre
+      - Octubre
+      - Noviembre
+      - Diciembre
   formErrors:
     pleaseReview: "Por favor, resvise los errores."
   menu:
