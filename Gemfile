@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.3.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.1"
+gem "rails", "~> 8.0.2"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "stimulus-rails"
@@ -20,8 +20,9 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 gem "sqlite3", ">= 2.1"
-gem 'requestjs-rails'
-gem "tailwindcss-rails"
+gem "requestjs-rails"
+gem "tailwindcss-rails", "4.1.0"
+gem "tailwindcss-ruby", "4.0.9"
 gem "turbo-rails"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
