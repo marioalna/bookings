@@ -1,7 +1,11 @@
-require "test_helper"
+require 'test_helper'
 
 class ScheduleCategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'validation name' do
+    @account = accounts(:account)
+
+    schedule_category = ScheduleCategory.new account_id: @account.id
+
+    assert_not schedule_category.valid?
+  end
 end

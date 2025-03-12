@@ -1,11 +1,29 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+booking1_sc1:
+  user: admin
+  schedule_category: schedule_category
+  start_on: <%= Date.current.beginning_of_month %>
+  participants: 9
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+booking5_sc1:
+  user: regular
+  schedule_category: schedule_category
+  start_on: <%= Date.current.beginning_of_month %>
+  participants: 13
+
+booking2_sc2:
+  user: regular
+  schedule_category: schedule_category2
+  start_on: <%= Date.current.beginning_of_month + 4.days %>
+  participants: 7
+
+booking3_sc2:
+  user: admin
+  schedule_category: schedule_category2
+  start_on: <%= Date.current.beginning_of_month + 14.days %>
+  participants: 27
+
+booking4_sc1:
+  user: admin
+  schedule_category: schedule_category
+  start_on: <%= Date.current.beginning_of_month + 4.days  %>
+  participants: 11

@@ -1,11 +1,142 @@
 es:
-  home:
-    description: Esta aplicación te permite gestionar reservas de recursos
-    know_more: Más información
-    log_in: Iniciar sesión
-    welcome: Bienvenido a la aplicación de reservas
-  main:
-    home: Inicio
-    reservations: Reservas
-    users: Usuarios
-    resources: Recursos
+  admin:
+    resources:
+      addFirst: "Añade el primer recurso"
+      created: "Recurso creado"
+      deleted: "Recurso eliminado"
+      maxCapacity: "Capacidad máxima"
+      name: "Nombre"
+      newTitle: "Nuevo recurso"
+      noResources: "No hay recursos todavía"
+      title: "Recursos"
+      updated: "Recurso actualizado"
+    scheduleCategories:
+      addFirst: "Añade el primer horario"
+      created: "Horario creado"
+      colour: "Color"
+      deleted: "Horario eliminado"
+      icon: "Icono"
+      name: "Nombre"
+      newTitle: "Nuevo horario"
+      noCategories: "No hay horarios todavía"
+      selectColour: "Elegir color"
+      title: "Horarios"
+      updated: "Horario actualizado"
+    users:
+      created: "Usuario creado"
+      deleted: "Usuario eliminado"
+      email: "Email"
+      name: "Nombre"
+      newTitle: "Nuevo usuario"
+      title: "Usuarios"
+      username: "Nombre usuario"
+      updated: "Usuario actualizado"
+  buttons:
+    cancel: "Cancelar"
+    delete: "Eliminar"
+    deleteAction:
+      confirmText: "¿ Estás seguro ?"
+      disableText: "Borrando..."
+    edit: "Editar"
+    save: "Guardar"
+  bookings:
+    addFirst: "Añade una reserva."
+    assign:
+      enough: "Ya tienes suficientes recursos asignados."
+      exceeded: "El límite de comensales es XX, lo excedes por YY comensales."
+      notEnough: "Tienes pendiente asignar espacio para X comensales."
+    allUsers: "Cualquier usuario"
+    allResources: "Cualquier recurso"
+    noBookings: "No has hecho ninguna reserva."
+    created: "Reserva creada"
+    currentInfo: "Para el horario %{schedule_name} hay un total de %{num_bookings} reservas y %{participants} comensales."
+    deleted: "Reserva eliminada"
+    name: "Nombre"
+    newTitle: "Nueva reserva"
+    participants: "N° comensales"
+    startOn: "Fecha"
+    scheduleCategory: "Horario"
+    title: "Reservas"
+    updated: "Reserva actualizada"
+    user: "Usuario"
+  calendar:
+    monday:
+      short: "L"
+      long: "Lun"
+    tuesday:
+      short: "M"
+      long: "Mar"
+    wednesday:
+      short: "X"
+      long: "Mié"
+    thursday:
+      short: "J"
+      long: "Jue"
+    friday:
+      short: "V"
+      long: "Vie"
+    saturday:
+      short: "S"
+      long: "Sáb"
+    sunday:
+      short: "D"
+      long: "Dom"
+    title: "Calendario"
+  date:
+    abbr_day_names:
+      - dom
+      - lun
+      - mar
+      - mié
+      - jue
+      - vie
+      - sáb
+    abbr_month_names:
+      -
+      - ene
+      - feb
+      - mar
+      - abr
+      - may
+      - jun
+      - jul
+      - ago
+      - sep
+      - oct
+      - nov
+      - dic
+    day_names:
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
+    formats:
+      default: "%-d-%m-%Y"
+      month_name: "%B"
+      month_year: "%B %Y"
+    month_names:
+      -
+      - Enero
+      - Febrero
+      - Marzo
+      - Abril
+      - Mayo
+      - Junio
+      - Julio
+      - Agosto
+      - Septiembre
+      - Octubre
+      - Noviembre
+      - Diciembre
+  formErrors:
+    pleaseReview: "Por favor, resvise los errores."
+  menu:
+    bookings: "Reservas"
+    calendar: "Calendario"
+    resources: "Recursos"
+    scheduleCategories: "Horarios"
+    users: "Usuarios"
+    logOut: "Cerrar sesión"

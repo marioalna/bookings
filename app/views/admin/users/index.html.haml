@@ -1,0 +1,17 @@
+.divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
+  .px-4.py-5.sm:px-6
+    = render 'shared/header', title: t('admin.users.title') do
+      = render 'shared/button_new',  destination: new_admin_user_path, title: t('admin.users.newTitle')
+  .px-4.py-5.sm:p-6
+    %table.mt-2.min-w-full.table-stripped
+      %thead
+        %tr
+          %th{class: th_class.render}
+            = t 'admin.users.name'
+          %th{class: th_class.render}
+            = t 'admin.users.username'
+          %th{class: th_class.render}
+            = t 'admin.users.email'
+          %th{class: th_class.render}
+      %tbody
+        = render partial: 'admin/users/user', collection: @users

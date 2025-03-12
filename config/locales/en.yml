@@ -1,31 +1,96 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  admin:
+    resources:
+      addFirst: "Add first resource"
+      created: "Resource created"
+      deleted: "Resource deleted"
+      maxCapacity: "Max capacity"
+      name: "Name"
+      newTitle: "New resource"
+      noResources: "There is no resources yet"
+      title: "Resources"
+      updated: "Resource updated"
+    scheduleCategories:
+      addFirst: "Add first schedule"
+      created: "Schedule created"
+      colour: "Colour"
+      deleted: "Schedule deleted"
+      icon: "Icon"
+      name: "Name"
+      newTitle: "New schedule"
+      noCategories: "There is no schedules yet"
+      selectColour: "Select colour"
+      title: "Schedules"
+      updated: "Schedule updated"
+    users:
+      created: "User created"
+      deleted: "User deleted"
+      email: "Email"
+      name: "Name"
+      newTitle: "New user"
+      title: "Users"
+      username: "Username"
+      updated: "User updated"
+  buttons:
+    cancel: "Cancel"
+    delete: "Delete"
+    deleteAction:
+      confirmText: "Are you sure ?"
+      disableText: "Deleting..."
+    edit: "Edit"
+    save: "Save"
+  bookings:
+    addFirst: "Add first booking."
+    assign:
+      enough: "You have enough resources assigned."
+      exceeded: "You exceed the limit of diners."
+      notEnough: "You have X diners pending to assign."
+    allUsers: "All users"
+    allResources: "All resources"
+    noBookings: "There is no bookings yet"
+    created: "Booking created"
+    currentInfo: "For %{schedule_name} schedule there are %{num_reservas} bookings with %{participants} diners."
+    deleted: "Booking deleted"
+    name: "Name"
+    newTitle: "New booking"
+    participants: "Num. diners"
+    startOn: "Start on"
+    scheduleCategory: "Schedule"
+    updated: "Booking updated"
+    user: "User"
+  calendar:
+    monday:
+      short: "M"
+      long: "Mon"
+    tuesday:
+      short: "T"
+      long: "Tue"
+    wednesday:
+      short: "W"
+      long: "Wed"
+    thursday:
+      short: "Th"
+      long: "Thu"
+    friday:
+      short: "F"
+      long: "Fri"
+    saturday:
+      short: "S"
+      long: "Sat"
+    sunday:
+      short: "Su"
+      long: "Sun"
+    title: "Calendar"
+  date:
+    default: "%-d-%m-%Y"
+    formats:
+      month_name: "%B"
+  formErrors:
+    pleaseReview: "Please, check errors."
+  menu:
+    bookings: "Bookings"
+    calendar: "Calendar"
+    resources: "Resources"
+    scheduleCategories: "Schedules"
+    users: "Users"
+    logOut: "Log out"

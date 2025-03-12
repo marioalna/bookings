@@ -1,0 +1,5 @@
+= turbo_stream.update 'resources-list' do
+  - if @errors.any?
+    = render partial: 'bookings/error', collection: @errors
+  - else
+    = render partial: 'bookings/resource_booking', collection: @available_resources

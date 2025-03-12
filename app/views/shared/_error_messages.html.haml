@@ -1,0 +1,10 @@
+- if error_messages.any?
+  .rounded-md.bg-red-50.p-4
+    .flex
+      .ml-3
+        %h4.text-sm.font-medium.text-red-800
+          = t('formErrors.pleaseReview', total: error_messages.size)
+        .mt-2.text-sm.text-red-700
+          %ul.list-disc.pl-5.space-y-1{role: "list"}
+            - error_messages.each do |error|
+              %li= error

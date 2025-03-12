@@ -20,6 +20,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 gem "sqlite3", ">= 2.1"
+gem 'requestjs-rails'
 gem "tailwindcss-rails"
 gem "turbo-rails"
 
@@ -35,7 +36,6 @@ gem "thruster", require: false
 group :development, :test do
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-  gem "hotwire-spark"
   gem "faker"
   gem "parallel_tests"
   gem "rubocop-rails-omakase", require: false
