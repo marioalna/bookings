@@ -9,7 +9,6 @@ BookingsApp es una aplicación web desarrollada con el propósito de ofrecer una
 * **Gestión de Recursos:** Creación, edición y eliminación de recursos.
 * **Gestión de Horarios:** Creación, edición y eliminación de horarios asignables a recursos.
 * **Sistema de Reservas:** Interfaz intuitiva para que los usuarios puedan ver la disponibilidad y realizar reservas.
-* **Gestión Avanzada de Disponibilidad:** El sistema implementa una verificación robusta para asegurar que las reservas no excedan la capacidad máxima definida para cada recurso. Además, se controla dinámicamente el número de reservas simultáneas permitidas en función del horario específico, evitando sobreocupaciones y conflictos de agenda.
 * **Autenticación de Usuarios:** Sistema seguro para que los usuarios puedan registrarse, iniciar sesión y gestionar sus reservas.
 * **Panel de Administración:** Interfaz para administradores para gestionar recursos, reservas, horarios y usuarios.
 * **Diseño Responsivo:** La interfaz de usuario se adapta fluidamente a diferentes tamaños de pantalla (ordenadores de escritorio, tablets y dispositivos móviles), proporcionando una experiencia consistente en cualquier dispositivo.
@@ -19,5 +18,5 @@ BookingsApp es una aplicación web desarrollada con el propósito de ofrecer una
 ![Captura de pantalla del calendario](app/assets/images/screenshots/calendar.png)
 ![Captura de pantalla del indice de reservas con un filtro por usuario](app/assets/images/screenshots/bookings_index.png)
 ![Captura de pantalla del formulario de reservas](app/assets/images/screenshots/bookings_form.png)
-![Captura de pantalla del indice de horarios con la pagina en tamaño mobil y el menu abierto.](app/assets/images/screenshots/bookings_form.png)
+![Captura de pantalla del indice de horarios con la pagina en tamaño mobil y el menu abierto.](app/assets/images/screenshots/schedules_mobile.png)
 
