@@ -3,3 +3,5 @@
     = render partial: 'bookings/error', collection: @errors
   - else
     = render partial: 'bookings/resource_booking', collection: @available_resources
+= turbo_stream.update 'bookings-info' do
+  = render "shared/notification", title: I18n.t("bookings.currentInfo", num_bookings: @num_bookings, participants: @participants, schedule_name: @schedule_name)

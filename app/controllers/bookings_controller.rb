@@ -1,10 +1,9 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: %i[edit update destroy]
-  before_action :find_schedule_categories, only: %i[new create edit update]
+  before_action :find_schedule_categories, only: %i[new check create edit update]
   before_action :find_resources, only: %i[new create edit update]
   before_action :find_date, only: %i[index]
   before_action :find_bookings, only: %i[index]
-  before_action :current_info, only: %i[new create edit update]
 
   def index
   end
@@ -12,6 +11,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Current.user.bookings.new start_on: booking_date, schedule_category_id: @schedule_categories.first[0]
     available_resources
+    current_info
   end
 
   def create
@@ -20,12 +20,14 @@ class BookingsController < ApplicationController
       redirect_to bookings_path, notice: t("booking.created")
     else
       available_resources
+      current_info
       render "new", status: :unprocessable_entity
     end
   end
 
   def edit
     available_resources
+    current_info
   end
 
   def update
@@ -33,6 +35,7 @@ class BookingsController < ApplicationController
       redirect_to bookings_path, notice: t("bookings.updated")
     else
       available_resources
+      current_info
       render "edit", status: :unprocessable_entity
     end
   end
@@ -45,6 +48,7 @@ class BookingsController < ApplicationController
 
   def check
     available_resources
+    current_info
   end
 
   private
@@ -90,10 +94,9 @@ class BookingsController < ApplicationController
       @num_bookings = 0
       @participants = 0
 
-      schedule_category_id = @booking.present? ? @booking.schedule_category_id : @schedule_categories.first[0]
       @schedule_name = Current.account.schedule_categories.find(schedule_category_id).name
 
-      bookings = Current.account.bookings.where(start_on: booking_date, schedule_category_id:)
+      bookings = Current.account.bookings.where(start_on:, schedule_category_id:)
       bookings.each do |booking|
         @num_bookings += 1
         @participants += booking.participants

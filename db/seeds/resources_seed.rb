@@ -20,12 +20,20 @@ class ResourcesSeed
 
   def add_resources
     account.resources.create!(
-      name: 'Mesa 1',
-      max_capacity: 15
+      name: 'Table 1',
+      max_capacity: 8
     )
     account.resources.create!(
-      name: 'Mesa 2',
-      max_capacity: 10
+      name: 'Table 2',
+      max_capacity: 12
+    )
+    account.resources.create!(
+      name: 'Main office',
+      max_capacity: 20
+    )
+    account.resources.create!(
+      name: 'Gym',
+      max_capacity: 50
     )
   end
 end

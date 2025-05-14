@@ -15,14 +15,14 @@ class AccountsSeed
   private
 
     def create_account
-      @account = Account.create!(id: 1, name: 'La sociedad', email: 'admin@test.com')
+      @account = Account.create!(id: 1, name: 'HR Company', email: 'admin@test.com')
       create_users
     end
 
     def create_users
-      user = @account.users.create! name: "admin name", username: 'adminusername', email: 'admin@test.com', role: User::ADMIN,
+      user = @account.users.create! name: "Mario Alvarez", username: 'marioalvarezuser', email: 'admin@test.com', role: User::ADMIN,
                              password: '111111', password_confirmation: '111111'
-      @account.users.create! name: "regular name", username: 'regularusername', email: 'regular@test.com', role: User::REGULAR,
+      @account.users.create! name: "Jorge Alvarez", username: 'jorgeuser', email: 'regular@test.com', role: User::REGULAR,
                              password: '111111', password_confirmation: '111111'
     end
 end
