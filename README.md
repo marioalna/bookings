@@ -1,29 +1,45 @@
 BookingsApp
 
-## 🌟 Descripción General
+## 🌟 General Description
 
-BookingsApp es una aplicación web desarrollada con el propósito de ofrecer una solución integral para la gestión y reserva de recursos. Aunque inicialmente creada para facilitar la organización en entornos como sociedades gastronómicas, donde la reserva de espacios y elementos compartidos es fundamental, este proyecto, desarrollado como una oportunidad para explorar y aplicar diversas tecnologías y patrones de desarrollo, permite a los administradores definir y gestionar la disponibilidad de elementos como salas de reuniones o herramientas. Los usuarios pueden realizar reservas de manera eficiente a través de una interfaz intuitiva, haciendo de esta una herramienta adaptable a diversos contextos donde la gestión de reservas sea necesaria. Su diseño y funcionalidad buscan ofrecer una experiencia de usuario fluida y práctica
+BookingsApp is a web application developed with the purpose of offering a solution for the management and booking of resources. Although initially created to make organization easier in environments such as gastronomic societies, where booking shared spaces and items is fundamental, this project, developed as an opportunity to explore and apply various technologies and development patterns, allows administrators to define and manage the availability of elements such as meeting rooms or tools. Users can make bookings efficiently through an intuitive interface, making this a tool adaptable to various contexts where booking management is necessary. Its design and functionality aim to offer a fluid and practical user experience.
 
-## ✨ Características Principales
+## ✨ Main Features
 
-* **Gestión de Recursos:** Creación, edición y eliminación de recursos.
-* **Gestión de Horarios:** Creación, edición y eliminación de horarios asignables a recursos.
-* **Sistema de Reservas:** Interfaz intuitiva para que los usuarios puedan ver la disponibilidad y realizar reservas.
-* **Autenticación de Usuarios:** Sistema seguro para que los usuarios puedan registrarse, iniciar sesión y gestionar sus reservas.
-* **Panel de Administración:** Interfaz para administradores para gestionar recursos, reservas, horarios y usuarios.
-* **Diseño Responsivo:** La interfaz de usuario se adapta fluidamente a diferentes tamaños de pantalla (ordenadores de escritorio, tablets y dispositivos móviles), proporcionando una experiencia consistente en cualquier dispositivo.
+* **Resource Management:** Allows creating, editing, and deleting resources.
+* **Schedule Management:** Allows creating, editing, and deleting schedules.
+* **Booking System:** An easy-to-use interface so users can see when things are available and make their bookings.
+* **User Authentication:** A secure system where users can sign up, log in, and handle their reservations.
+* **Administration Panel:** An interface for administrators to manage resources, bookings, schedules, and users.
+* **Responsive Design:** The user interface changes smoothly to fit different screen sizes like desktops, tablets, and mobiles, giving a consistent experience on any device.
 
-## 🖼️ Capturas de Pantalla
+## 🛠️ Technologies Used
 
-![Captura de pantalla del calendario](app/assets/images/screenshots/calendar.png)
+This application was built using the following technologies:
+
+* Ruby
+* Rails
+* PostgreSQL
+* Stimulus
+* Hotwire
+* JavaScript
+* TailwindCSS
+* Active Storage
+* HTML
+* CSS
+* And others.
+
+## 🖼️ Screenshots
+
+![Calendar screenshot](app/assets/images/screenshots/calendar.png)
 
 
-![Captura de pantalla del indice de reservas con un filtro por usuario](app/assets/images/screenshots/bookings_index.png)
+![Bookings index with an user filter screenshot](app/assets/images/screenshots/bookings_index.png)
 
 
-![Captura de pantalla del formulario de reservas](app/assets/images/screenshots/bookings_form.png)
+![Bookings form screenshot](app/assets/images/screenshots/bookings_form.png)
 
 
-![Captura de pantalla del indice de horarios con la pagina en tamaño mobil y el menu abierto.](app/assets/images/screenshots/schedules_mobile.png)
+![Schedules index with open menu in a mobile browser screenshot.](app/assets/images/screenshots/schedules_mobile.png)
 
 
