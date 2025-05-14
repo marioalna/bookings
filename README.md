@@ -16,7 +16,14 @@ BookingsApp es una aplicación web desarrollada con el propósito de ofrecer una
 ## 🖼️ Capturas de Pantalla
 
 ![Captura de pantalla del calendario](app/assets/images/screenshots/calendar.png)
+
+
 ![Captura de pantalla del indice de reservas con un filtro por usuario](app/assets/images/screenshots/bookings_index.png)
+
+
 ![Captura de pantalla del formulario de reservas](app/assets/images/screenshots/bookings_form.png)
+
+
 ![Captura de pantalla del indice de horarios con la pagina en tamaño mobil y el menu abierto.](app/assets/images/screenshots/schedules_mobile.png)
+
 
