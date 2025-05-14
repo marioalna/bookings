@@ -22,7 +22,7 @@ gem "solid_cable"
 gem "sqlite3", ">= 2.1"
 gem "requestjs-rails"
 gem "tailwindcss-rails", "4.1.0"
-gem "tailwindcss-ruby", "4.0.9"
+gem "tailwindcss-ruby", "4.1.6"
 gem "turbo-rails"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
