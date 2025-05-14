@@ -57,6 +57,7 @@ en:
     startOn: "Start on"
     resourceCapacity: "Diners: %{max_capacity}"
     scheduleCategory: "Schedule"
+    title: "Bookings"
     updated: "Booking updated"
     user: "User"
   calendar:

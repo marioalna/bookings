@@ -20,6 +20,13 @@ class BookingsSeed
 
     def add_bookings
       user = account.users.first
+      user1 = account.users.last
+
+      create_bookings(user)
+      create_bookings(user1)
+    end
+
+    def create_bookings(user)
       schedule_category = account.schedule_categories.first
       schedule_category1 = account.schedule_categories.last
 
