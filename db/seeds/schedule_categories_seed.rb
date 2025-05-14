@@ -20,11 +20,11 @@ class ScheduleCategoriesSeed
 
   def add_categories
     account.schedule_categories.create!(
-      name: 'Mañana',
+      name: 'Morning',
       colour: 'red'
     )
     account.schedule_categories.create!(
-      name: 'Tarde',
+      name: 'Evening',
       colour: 'blue'
     )
   end

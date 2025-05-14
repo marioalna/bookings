@@ -25,6 +25,6 @@ module Sociedad
     config.time_zone = "Madrid"
 
     config.i18n.available_locales = %i[en es]
-    config.i18n.default_locale = :es
+    config.i18n.default_locale = :en
   end
 end

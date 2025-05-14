@@ -1,0 +1,11 @@
+= tag.div class: "m-6" do
+  = tag.div class: 'relative', data: { controller: :resource, action: 'click->booking#toggle click->resource#toggle', booking_id_param: resource_booking.id, resource_id_value: resource_booking.id } do
+    = tag.input type: 'hidden', name: "booking[resource_bookings_attributes][#{resource_booking.id}][resource_id]", value: selected_resource_booking(params, resource_booking.id), data: { resource_target: :resource }
+    = tag.div class: "relative h-72 w-full overflow-hidden rounded-lg", data: { resource_target: "selected" } do
+      = image_tag resource_image(resource_booking), class: "h-full w-full object-cover object-center"
+    .absolute.inset-x-0.top-0.flex.h-72.items-end.justify-end.overflow-hidden.rounded-lg.p-4
+      .absolute.inset-x-0.bottom-0.h-36.bg-gradient-to-t.from-black.opacity-50{"aria-hidden" => "true"}
+      = tag.p class: "relative text-lg font-semibold text-white" do
+        = resource_booking.name
+        %br
+          = t('bookings.resourceCapacity', max_capacity: resource_booking.max_capacity)

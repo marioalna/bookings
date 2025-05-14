@@ -56,6 +56,7 @@ es:
     participants: "N° comensales"
     startOn: "Fecha"
     scheduleCategory: "Horario"
+    resourceCapacity: "Comensales: %{max_capacity}"
     title: "Reservas"
     updated: "Reserva actualizada"
     user: "Usuario"

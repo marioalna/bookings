@@ -49,12 +49,13 @@ en:
     allResources: "All resources"
     noBookings: "There is no bookings yet"
     created: "Booking created"
-    currentInfo: "For %{schedule_name} schedule there are %{num_reservas} bookings with %{participants} diners."
+    currentInfo: "For %{schedule_name} schedule there are %{num_bookings} bookings with %{participants} diners."
     deleted: "Booking deleted"
     name: "Name"
     newTitle: "New booking"
     participants: "Num. diners"
     startOn: "Start on"
+    resourceCapacity: "Diners: %{max_capacity}"
     scheduleCategory: "Schedule"
     updated: "Booking updated"
     user: "User"
@@ -84,7 +85,9 @@ en:
   date:
     default: "%-d-%m-%Y"
     formats:
+      default: "%-d-%m-%Y"
       month_name: "%B"
+      month_year: "%B %Y"
   formErrors:
     pleaseReview: "Please, check errors."
   menu:

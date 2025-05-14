@@ -45,6 +45,7 @@ class BookingsController < ApplicationController
 
   def check
     available_resources
+    current_info
   end
 
   private

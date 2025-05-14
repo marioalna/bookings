@@ -69,9 +69,6 @@ class Bookings::AvailableResourcesTest < ActiveSupport::TestCase
       @resource ||= resources(:resource)
     end
 
-    def test
-    end
-
     def resource2
       @resource2 ||= resources(:resource2)
     end
