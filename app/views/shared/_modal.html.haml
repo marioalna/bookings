@@ -1,10 +1,8 @@
 = turbo_frame_tag "modal" do
-  %dialog.rounded-md.shadow-xl.min-w-80.px-10.py-4{"aria-labelledby" => "modal_title", data: { controller: "turbo-modal", 'turbo-modal-target': "modalDialog"}}
+  %dialog.rounded-md.shadow-xl.min-w-80.px-10.py-4.my-auto{"aria-labelledby" => "modal_title", data: { controller: "turbo-modal", 'turbo-modal-target': "modalDialog"}}
     %header
-      %h2.text-xl.font-medium.leading-6.text-gray-900#modal_title
-        = @title
       .cursor-pointer.z-50{"data-action" => "click->turbo-modal#close"}
-        %svg.fill-current.text-black{height: "18", viewbox: "0 0 18 18", width: "18", xmlns: "http://www.w3.org/2000/svg"}
+        %svg.fill-current.text-black.size-6{height: "18", viewbox: "0 0 18 18", width: "18", xmlns: "http://www.w3.org/2000/svg"}
           %path{d: "M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"}
     #modal_content.my-5
       = yield

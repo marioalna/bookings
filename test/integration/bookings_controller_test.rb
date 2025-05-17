@@ -33,4 +33,38 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 5, booking.participants
     assert_equal 1, booking.resource_bookings.count
   end
+
+  test 'edit' do
+    get edit_booking_path(booking)
+
+    assert_response :success
+  end
+
+  test "should update a booking" do
+    booking.update start_on: Date.current + 1
+    params = { booking: { participants: 45 } }
+
+    put booking_path(booking), params: params
+
+    assert_response :redirect
+
+    assert_equal 45, booking.reload.participants
+  end
+
+  test "should destroy a booking" do
+    booking
+
+    assert_difference 'Booking.count', -1 do
+      delete booking_path(booking)
+    end
+
+    assert_response :redirect
+  end
+
+
+    private
+
+      def booking
+        @booking ||= bookings(:booking1_sc1)
+      end
 end

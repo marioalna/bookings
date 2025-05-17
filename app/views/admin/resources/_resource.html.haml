@@ -8,5 +8,5 @@
     = resource.max_capacity
   %td{class: td_class.render}
     .flex.gap-x-4.justify-end
-      = render partial: 'shared/button_edit', locals:  {destination: edit_admin_resource_path(resource)}
-      = render partial: 'shared/button_delete', locals:  {destination: {model: [:admin, resource]} }
+      = render 'shared/button_edit', destination: edit_admin_resource_path(resource), data: { target: "_top" }
+      = render 'shared/button_delete', destination: {model: [:admin, resource]}

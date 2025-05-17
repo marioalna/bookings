@@ -12,7 +12,7 @@ export default class extends Controller {
     this.modalDialogTarget.showModal();
   }
 
-  close(event) {
+  close() {
     this.element.parentElement.removeAttribute("src");
     this.element.parentElement.innerHTML = "";
     this.modalDialogTarget.close();
