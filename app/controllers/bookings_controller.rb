@@ -16,8 +16,9 @@ class BookingsController < ApplicationController
 
   def create
     @booking =  Current.user.bookings.create booking_params
+
     if @booking.persisted?
-      redirect_to bookings_path, notice: t("booking.created")
+      redirect_to bookings_path, notice: t("bookings.created")
     else
       available_resources
       current_info
@@ -43,7 +44,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
 
-    redirect_to bookings_path, notice: t("booking.deleted")
+    redirect_to bookings_path, notice: t("bookings.deleted")
   end
 
   def check
@@ -57,16 +58,21 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(:start_on, :schedule_category_id, :participants, resource_bookings_attributes: %i[resource_id])
     end
 
+    def find_schedule_categories
+      @schedule_categories = Current.account.schedule_categories.pluck(:id, :name)
+    end
+
+    def find_resources
+      @resources = Current.account.resources
+        .includes(:resource_bookings).order(max_capacity: :desc)
+    end
+
     def find_booking
       @booking = if Current.user.admin?
         Current.account.bookings.find params[:id]
       else
         Current.user.bookings.find params[:id]
       end
-    end
-
-    def available_resources
-      @available_resources, @errors = Bookings::AvailableResources.new(Current.user.id, start_on, schedule_category_id).call
     end
 
     def start_on
@@ -81,26 +87,21 @@ class BookingsController < ApplicationController
       params[:booking][:schedule_category_id]
     end
 
-    def find_schedule_categories
-      @schedule_categories = Current.account.schedule_categories.pluck(:id, :name)
-    end
-
-    def find_resources
-      @resources = Current.account.resources
-        .includes(:resource_bookings).order(max_capacity: :desc)
+    def available_resources
+      @available_resources, @errors = Bookings::AvailableResources.new(Current.user.id, start_on, schedule_category_id).call
     end
 
     def current_info
-      @num_bookings = 0
-      @participants = 0
+      Bookings::CurrentInfo.new(Current.account, start_on, schedule_category_id).call
+    end
 
-      @schedule_name = Current.account.schedule_categories.find(schedule_category_id).name
+    def find_bookings
+      @bookings = Bookings::Finder.new(Current.account, params, @start_date..@end_date).call
+    end
 
-      bookings = Current.account.bookings.where(start_on:, schedule_category_id:)
-      bookings.each do |booking|
-        @num_bookings += 1
-        @participants += booking.participants
-      end
+    def find_date
+      @start_date = booking_date.beginning_of_month
+      @end_date = booking_date.end_of_month
     end
 
     def booking_date
@@ -109,23 +110,5 @@ class BookingsController < ApplicationController
       Date.parse params[:date]
     rescue
       Date.current
-    end
-
-    def find_date
-      @start_date = booking_date.beginning_of_month
-      @end_date = booking_date.end_of_month
-    end
-
-    def find_bookings
-      user_id = Current.account.users.find_by(id: params[:user_id])&.id
-      resource_id = Current.account.resources.find_by(id: params[:resource_id])&.id
-
-      @bookings = if user_id.present?
-        Current.account.bookings.where(start_on: @start_date..@end_date, user_id: params[:user_id]).order(:start_on, :schedule_category_id)
-      elsif resource_id.present?
-        Current.account.bookings.joins(:resources).where(start_on: @start_date..@end_date, resources: { id: resource_id }).order(:start_on, :schedule_category_id)
-      else
-        Current.account.bookings.where(start_on: @start_date..@end_date).order(:start_on, :schedule_category_id)
-      end
     end
 end

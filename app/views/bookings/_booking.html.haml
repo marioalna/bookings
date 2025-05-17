@@ -12,5 +12,5 @@
   - if can_edit?(booking)
     %td{class: td_class.render}
       .flex.gap-x-4.justify-end
-        = render partial: 'shared/button_edit', locals:  {destination: edit_booking_path(booking)}
-        = render partial: 'shared/button_delete', locals:  {destination: {model: booking} }
+        = render 'shared/button_edit', destination: edit_booking_path(booking), data: { turbo_frame: 'modal' }
+        = render 'shared/button_delete', destination: {model: booking}

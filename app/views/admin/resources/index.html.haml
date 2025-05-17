@@ -1,7 +1,7 @@
 .divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
   .px-4.py-5.sm:px-6
     = render 'shared/header', title: t('admin.resources.title') do
-      = render 'shared/button_new',  destination: new_admin_resource_path, title: t('admin.resources.newTitle')
+      = render 'shared/button_new',  destination: new_admin_resource_path, title: t('admin.resources.newTitle'), data: { target: "_top" }
   .px-4.py-5.sm:p-6
     - if @resources.any?
       %table.mt-2.min-w-full.table-stripped
