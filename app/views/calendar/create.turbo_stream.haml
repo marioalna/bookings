@@ -1,6 +1,8 @@
 - if @booking.valid?
   = turbo_stream.update 'modal' do
     %div
+  = turbo_stream.replace 'flash-messages' do
+    = render Notifications::FlashComponent.new(flash)
   = turbo_stream.replace @day[:day] do
     = render 'calendar/large_day', day: @day
 - else

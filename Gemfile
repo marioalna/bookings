@@ -24,6 +24,7 @@ gem "requestjs-rails"
 gem "tailwindcss-rails", "4.1.0"
 gem "tailwindcss-ruby", "4.0.9"
 gem "turbo-rails"
+gem "view_component"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
