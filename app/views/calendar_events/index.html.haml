@@ -1,2 +1,2 @@
 = turbo_frame_tag 'calendar_events_mid' do
-  = render partial: 'calendar_events/full_event', collection: @bookings, as: :booking
+  = render partial: 'calendar_events/calendar_event', collection: @bookings.order(:schedule_category_id), as: :booking
