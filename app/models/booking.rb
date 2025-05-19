@@ -20,6 +20,8 @@ class Booking < ApplicationRecord
 
   accepts_nested_attributes_for :resource_bookings, allow_destroy: true, reject_if: :all_blank
 
+  scope :for_today, ->(date) { joins(:schedule_category).where(start_on: date) }
+
   private
 
     def assign_end_on
