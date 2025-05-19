@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_24_161034) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_112359) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -45,6 +45,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_161034) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "booking_custom_attributes", force: :cascade do |t|
+    t.integer "booking_id"
+    t.integer "custom_attribute_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_booking_custom_attributes_on_booking_id"
+    t.index ["custom_attribute_id"], name: "index_booking_custom_attributes_on_custom_attribute_id"
+  end
+
   create_table "bookings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "schedule_category_id"
@@ -56,6 +65,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_161034) do
     t.index ["schedule_category_id"], name: "index_bookings_on_schedule_category_id"
     t.index ["user_id", "schedule_category_id", "start_on"], name: "idx_on_user_id_schedule_category_id_start_on_0264bf7367", unique: true
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "custom_attributes", force: :cascade do |t|
+    t.integer "account_id"
+    t.string "name", null: false
+    t.boolean "block_on_schedule", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_custom_attributes_on_account_id"
   end
 
   create_table "resource_bookings", force: :cascade do |t|
@@ -104,9 +122,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_161034) do
     t.bigint "account_id"
     t.string "name"
     t.string "username"
-    t.string "forget_token"
+    t.string "reset_token"
     t.integer "role", default: 0
-    t.datetime "forget_expires_at"
+    t.datetime "reset_expires_at"
     t.boolean "active", default: true
     t.index ["account_id", "email"], name: "index_users_on_account_id_and_email", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

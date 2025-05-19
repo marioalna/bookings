@@ -29,6 +29,11 @@ class CalendarController < ApplicationController
     end
   end
 
+  def check
+    available_resources
+    current_info
+  end
+
   private
 
     def booking_params
@@ -69,7 +74,11 @@ class CalendarController < ApplicationController
     end
 
     def current_info
-      Bookings::CurrentInfo.new(Current.account, start_on, schedule_category_id).call
+      info = Bookings::CurrentInfo.new(Current.account, start_on, schedule_category_id).call
+
+      @num_bookings = info[:num_bookings]
+      @participants = info[:participants]
+      @schedule_name = info[:schedule_name]
     end
 
     def bookings_for_day

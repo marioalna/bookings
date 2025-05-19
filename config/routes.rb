@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   resource :session
   resources :passwords, param: :token
-  resources :calendar, only: %i[index new create]
+  resources :calendar, only: %i[index new create] do
+    collection do
+      post :check
+    end
+  end
   resources :calendar_events, only: %i[index]
 
   root to: "calendar#index"
