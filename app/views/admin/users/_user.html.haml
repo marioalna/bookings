@@ -8,5 +8,5 @@
     = user.email
   %td{class: td_class.render}
     .flex.gap-x-4.justify-end
-      = render 'shared/button_edit', destination: edit_admin_user_path(user)
+      = render 'shared/button_edit', destination: edit_admin_user_path(user), data: {target: '_top'}
       = render 'shared/button_delete', destination: {model: [:admin, user]} 
