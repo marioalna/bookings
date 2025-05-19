@@ -17,6 +17,8 @@ module Bookings
         @num_bookings += 1
         @participants += booking.participants
       end
+
+      { num_bookings: @num_bookings, participants: @participants, schedule_name: @schedule_name }
     end
 
     private
