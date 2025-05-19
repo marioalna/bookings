@@ -26,10 +26,10 @@ module Bookings
       return if taken_resource_booking.blank?
 
       errors << if taken_resource_booking.user == user
-                  I18n.t('bookings.errors.takenByUser')
-                else
-                  I18n.t('bookings.errors.takenByOtherUser')
-                end
+        I18n.t('bookings.errors.takenByUser')
+      else
+        I18n.t('bookings.errors.takenByOtherUser')
+      end
     end
 
     def validate_capacity
