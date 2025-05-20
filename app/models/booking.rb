@@ -11,7 +11,7 @@ class Booking < ApplicationRecord
   validates :schedule_category_id, presence: true
   validates :start_on, comparison: { greater_than_or_equal_to: Date.current }
   validates :participants, comparison: { greater_than_or_equal_to: 0 }
-  validates_uniqueness_of :user_id, scope: [ :schedule_category_id, :start_on ]
+  validates_uniqueness_of :user_id, scope: [ :schedule_category_id, :start_on ], message: I18n.t('bookings.errors.userTaken')
   validates :colour, inclusion: { in: AVAILABLE_COLOURS }, allow_nil: true
 
   before_create :assign_end_on

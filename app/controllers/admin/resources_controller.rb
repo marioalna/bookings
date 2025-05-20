@@ -34,7 +34,7 @@ class Admin::ResourcesController < AdminController
   def destroy
     @resource.destroy
 
-    notice = t("admin_resources.deleted")
+    notice = t("admin.resources.deleted")
 
     redirect_to admin_resources_path, notice:
   end

@@ -1,6 +1,6 @@
 - if @booking.errors.any?
   .m-4.p-4.bg-red-100.text-red-900.rounded
-    = @booking.errors.full_messages.each do |error|
+    - @booking.errors.full_messages.each do |error|
       = error
 .flex.flex-col.md:flex-row.gap-4
   .w-full{class: 'sm:w-1/3'}
