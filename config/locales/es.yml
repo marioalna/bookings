@@ -141,3 +141,32 @@ es:
     scheduleCategories: "Horarios"
     users: "Usuarios"
     logOut: "Cerrar sesión"
+  passwords:
+    form:
+      forgot: "Has olvidado tu contraseña ?"
+      placeholder: "Escribe tu dirección de email"
+      placeholder1: "Escribe tu nueva contraseña"
+      placeholder2: "Repit tu nueva contraseña"
+      update: "Actualizar contraseña"
+      instructions: "Enviar instrucciones"
+    reset:
+      canReset: "Tienes 15 minutos para poder cambiar la contraseña"
+      canReset2: "Tienes 15 minutos para poder cambiar la contraseña en esta página:"
+      noMatch: "Las contraseñas no son iguales."
+      reset: "Cambiar contraseña"
+      resetPage: "Página de cambio de la contraseña"
+      reseted: "La contraseña ha sido cambiada."
+      invalid: "El link de cambio de contraseña ha expirado."
+      sent: "Instrucciones de cambio de contraseña enviadas(si el email es correcto)."
+  sessions:
+    form:
+      forgotPassword: "Has olvidado tu contraseña ?"
+      email: "Tu email"
+      noAccount: "Todavía no tienes una cuenta ?"
+      signIn: "Inicia sesión en tu cuenta"
+      signInButton: "Iniciar sesión"
+      signUp: "Registrarse"
+      password: "Contraseña"
+      placeholderEmail: "nombre@usuario.com"
+    tryAgain: "Inténtalo de nuevo más tarde."
+    tryAnother: "Prueba otro email o contraseña."

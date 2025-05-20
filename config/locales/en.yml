@@ -98,3 +98,32 @@ en:
     scheduleCategories: "Schedules"
     users: "Users"
     logOut: "Log out"
+  passwords:
+    form:
+      forgot: "Forgot your password ?"
+      placeholder: "Enter your email address"
+      placeholder1: "Enter new password"
+      placeholder2: "Repeat new password"
+      update: "Update your password"
+      instructions: "Email reset instructions"
+    reset:
+      canReset: "You can reset your password within the next 15 minutes on"
+      canReset2: "You can reset your password within the next 15 minutes on this password reset page:"
+      noMatch: "Passwords did not match."
+      reset: "Reset your password"
+      resetPage: "this password reset page"
+      reseted: "Password has been reset."
+      invalid: "Password reset link is invalid or has expired."
+      sent: "Password reset instructions sent (if user with that email address exists)."
+  sessions:
+    form:
+      forgotPassword: "Forgot password ?"
+      email: "Your email"
+      noAccount: "Don't have an account yet ?"
+      signIn: "Sign in to your account"
+      signInButton: "Sign in"
+      signUp: "Sign up"
+      password: "Password"
+      placeholderEmail: "name@user.com"
+    tryAgain: "Try again later."
+    tryAnother: "Try another email address or password."
