@@ -1,0 +1,3 @@
+.p
+  = t('passwords.reset.canReset')
+  = link_to t('passwords.reset.resetPage'), edit_password_url(@user.password_reset_token)
