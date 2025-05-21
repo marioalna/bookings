@@ -53,6 +53,7 @@ es:
       noResourcesAvailable: "No hay recursos disponibles para esta fecha y horario."
       takenByUser: "Ya tienes una reservado este recurso para esta fecha y horario."
       takenByOtherUser: "Otro usuario ya tiene reservado este recurso para esta fecha y horario."
+      userTaken: "No puedes realizar otra reserva para el mismo día y horario"
     noBookings: "No has hecho ninguna reserva."
     created: "Reserva creada"
     currentInfo: "Para el horario %{schedule_name} hay un total de %{num_bookings} reservas y %{participants} comensales."
