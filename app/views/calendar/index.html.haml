@@ -1,9 +1,12 @@
 .divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
   .px-4.py-5.sm:px-6
-    = render 'shared/header', title: (l @date, format: :month_year) do
-      .flex.gap-x-4.justify-between.items-center.mr-6
+    .flex.items-center.justify-center
+      .w-6.mr-3
         = link_to calendar_index_path(date: @date - 1.month), class: "w-5 h-5" do
           = image_tag 'icons/left_arrow.svg'
+      %h2.flex.items-center.text-2xl.font-bold.leading-7.text-neutral-800.sm:text-3xl.sm:leading-9.sm:truncate
+        = (l @date, format: :month_year)
+      .w-6.ml-3
         = link_to calendar_index_path(date: @date + 1.month), class: "w-5 h-5" do
           = image_tag 'icons/right_arrow.svg'
 .px-4.py-5.sm:p-6

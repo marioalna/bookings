@@ -15,7 +15,3 @@ es:
         name: "Nombre"
         max_capacity: "Capacidad máxima"
         photo: "Foto"
-    errors:
-      models:
-        booking:
-          user_taken: "No puedes realizar otra reserva para el mismo día y horario"

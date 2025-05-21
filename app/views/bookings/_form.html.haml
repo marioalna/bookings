@@ -17,4 +17,5 @@
   = render partial: 'bookings/resource_booking', collection: @available_resources
 %p{data: {booking_target: "message"}, class: ""}
 .mt-8.border-t.border-gray-200.pt-5
+  = link_to  t('buttons.cancel'), '#', class: "text-sm font-semibold text-gray-400 hover:text-gray-700", data: { action: 'turbo-modal#close:prevent' }
   = render 'shared/button', cancel_text: '', cancel_url: '', button_text: t('buttons.save')
