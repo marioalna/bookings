@@ -1,4 +1,4 @@
-.divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
+.divide-y.divide-gray-200.overflow-scroll.sm:overflow-hidden.rounded-lg.bg-white.shadow
   .px-4.py-5.sm:px-6
     = render 'shared/header', title: t('admin.users.title') do
       = render 'shared/button_new',  destination: new_admin_user_path, title: t('admin.users.newTitle'), data: { target: "_top" }
