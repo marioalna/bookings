@@ -83,7 +83,7 @@ class CalendarController < ApplicationController
 
     def bookings_for_day
       Current.account.bookings
-                  .for_today(booking_date)
+                  .for_today(start_on)
                   .group(:start_on, :schedule_category_id)
                   .select("bookings.start_on, sum(bookings.participants) as participants, schedule_categories.name as schedule_category_name, schedule_categories.colour as schedule_category_colour")
     end
