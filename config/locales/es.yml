@@ -1,5 +1,17 @@
 es:
   admin:
+    customAttributes:
+      addFirst: "Añade el primer atributo adicional"
+      created: "Atributo adicional creado"
+      deleted: "Atributo adicional eliminado"
+      block: "Bloquear"
+      false1: "No"
+      name: "Nombre"
+      newTitle: "Nuevo atributo adicional"
+      noCustomAttributes: "No hay atributos adicionales todavía"
+      title: "Atributos adicionales"
+      true1: "Sí"
+      updated: "Atributo adicional actualizado"
     resources:
       addFirst: "Añade el primer recurso"
       created: "Recurso creado"
@@ -47,6 +59,7 @@ es:
       notEnough: "Tienes pendiente asignar espacio para X comensales."
     allUsers: "Cualquier usuario"
     allResources: "Cualquier recurso"
+    customAttributes: "Atributos adicionales"
     errors:
       invalidDate: "Tienes que seleccionar una fecha a futuro."
       invalidSchedule: "Horario no válido"
@@ -143,6 +156,7 @@ es:
     pleaseReview: "Por favor, resvise los errores."
   menu:
     bookings: "Reservas"
+    customAttributes: "Atributos adicionales"
     calendar: "Calendario"
     resources: "Recursos"
     scheduleCategories: "Horarios"

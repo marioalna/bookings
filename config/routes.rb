@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :account, only: %i[show edit update]
+    resources :custom_attributes
     resources :users
     resources :resources
     resources :schedule_categories
