@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "up" => "rails/health#show", as: :rails_health_check
+
   namespace :admin do
     resources :account, only: %i[show edit update]
     resources :custom_attributes
