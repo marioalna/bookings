@@ -1,4 +1,4 @@
-= tag.div class: "m-6" do
+= tag.div do
   = tag.div class: 'relative', data: { controller: :resource, action: 'click->booking#toggle click->resource#toggle', booking_id_param: resource_booking.id, resource_id_value: resource_booking.id } do
     = tag.input type: 'hidden', name: "booking[resource_bookings_attributes][#{resource_booking.id}][resource_id]", value: selected_resource_booking(params, resource_booking.id), data: { resource_target: :resource }
     = tag.div class: "relative h-72 w-full overflow-hidden rounded-lg", data: { resource_target: "selected" } do
