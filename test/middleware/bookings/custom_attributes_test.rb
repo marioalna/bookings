@@ -1,19 +1,27 @@
 require 'test_helper'
 
-class Bookings::CustomAttributesCheckerTest < ActiveSupport::TestCase
-  test 'custom attributes available' do
-    booking = user.bookings.create(
-      schedule_category:,
-      start_on: Date.today,
-      participants: 5
+class Bookings::CustomAttributesTest < ActiveSupport::TestCase
+  test 'one custom attribute available' do
+    booking = regular_user.bookings.create(
+      schedule_category:, start_on: Date.today, participants: 5
     )
-    booking_custom_attribute = booking.booking_custom_attributes.create(custom_attribute_id: custom_attribute.id)
+    booking.booking_custom_attributes.create(custom_attribute_id: custom_attribute.id)
     custom_attribute2
 
     result = Bookings::CustomAttributes.new(users(:admin), Date.today, schedule_category.id).call
 
     assert_equal custom_attribute, result[:not_available].first
-     assert_equal custom_attribute2, result[:available].first
+    assert_equal custom_attribute2, result[:available].first
+  end
+
+  test 'all custom attributes available' do
+    custom_attribute2
+
+    result = Bookings::CustomAttributes.new(users(:admin), Date.today, schedule_category.id).call
+
+    assert result[:not_available].empty?
+    assert result[:available].include? custom_attribute
+    assert result[:available].include? custom_attribute2
   end
 
   private
@@ -22,13 +30,17 @@ class Bookings::CustomAttributesCheckerTest < ActiveSupport::TestCase
     @user ||= users(:admin)
   end
 
+  def regular_user
+    @regular_user ||= users(:regular)
+  end
+
   def create_bookings
     booking_1 = user.bookings.create(
       schedule_category:,
       start_on: Date.today,
       participants: 5
     )
-    booking_custom_attribute = booking_1.booking_custom_attributes custom_attribute_id: custom_attribute.id
+    booking_1.booking_custom_attributes custom_attribute_id: custom_attribute.id
   end
 
   def schedule_category

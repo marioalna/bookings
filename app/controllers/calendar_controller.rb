@@ -53,7 +53,7 @@ class CalendarController < ApplicationController
     end
 
     def custom_attributes
-      @custom_attributes = Bookings::CustomAttributes.new(Current.user, start_on, schedule_category_id, false).call
+      @custom_attributes = Bookings::CustomAttributes.new(Current.user, start_on, schedule_category_id).call
     end
 
     def find_schedule_categories
@@ -78,7 +78,7 @@ class CalendarController < ApplicationController
     end
 
     def available_resources
-      @available_resources, @errors = Bookings::AvailableResources.new(Current.user.id, start_on, schedule_category_id).call
+      @available_resources, @errors = Bookings::AvailableResources.new(Current.user, start_on, schedule_category_id).call
     end
 
     def current_info

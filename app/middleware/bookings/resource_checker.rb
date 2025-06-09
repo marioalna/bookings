@@ -1,16 +1,17 @@
 module Bookings
   class ResourceChecker
-    def initialize(user_id, resource_id, date, schedule_category_id, capacity)
-      @user_id = user_id
-      @resource_id = resource_id
-      @date = date
-      @schedule_category_id = schedule_category_id
-      @capacity = capacity
+    def initialize(current_user, **resource)
+      @current_user = current_user
+      @account = account
+      @resource_id = resource[:resource_id]
+      @date = resource[:date]
+      @schedule_category_id = resource[:schedule_category_id]
+      @capacity = resource[:capacity]
       @errors = []
     end
 
     def call
-      validate_date
+      validate_booked_on_date
       validate_capacity
 
       errors
@@ -18,14 +19,14 @@ module Bookings
 
     private
 
-    attr_reader :user_id, :resource_id, :date, :schedule_category_id, :capacity, :errors
+    attr_reader :current_user, :resource_id, :date, :schedule_category_id, :capacity, :errors
 
-    def validate_date
-      taken_resource_booking = resource.bookings.where(start_on: date).where(schedule_category_id:)&.first
+    def validate_booked_on_date
+      taken_resource_booking = resource.bookings.where(start_on: date).where(schedule_category_id:).where.not(user_id: current_user.id)&.first
 
       return if taken_resource_booking.blank?
 
-      errors << if taken_resource_booking.user == user
+      errors << if taken_resource_booking.user == current_user
         I18n.t('bookings.errors.takenByUser')
       else
         I18n.t('bookings.errors.takenByOtherUser')
@@ -33,18 +34,17 @@ module Bookings
     end
 
     def validate_capacity
-      return if capacity.nil?
-      return if resource.max_capacity >= capacity
+      return if capacity.nil? || resource.max_capacity >= capacity
 
       errors << I18n.t('bookings.errors.invalidCapacity')
     end
 
-    def user
-      @user ||= User.find user_id
+    def resource
+      @resource ||= account.resources.find resource_id
     end
 
-    def resource
-      @resource ||= user.account.resources.find resource_id
+    def account
+      @account ||= current_user.account
     end
   end
 end

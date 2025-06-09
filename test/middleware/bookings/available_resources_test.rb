@@ -6,20 +6,20 @@ class Bookings::AvailableResourcesTest < ActiveSupport::TestCase
     booking.resource_bookings.create! resource_id: resource.id
     booking = user.bookings.create! schedule_category: schedule_category2, start_on: Date.today, participants: 8
     booking.resource_bookings.create! resource_id: resource2.id
+    available_resources = Bookings::AvailableResources.new(user, Date.current, schedule_category2.id).call
 
-    assert_equal 1, Bookings::AvailableResources.new(
-      user.id, Date.today, schedule_category2.id).call.first.count
+    assert_equal 2, available_resources.first.count
   end
 
   test "valid booking only 1 resource" do
     booking = user.bookings.create schedule_category:, start_on: Date.today, participants: 10
     booking.resource_bookings.create resource_id: resource.id
 
-    booking = user.bookings.create schedule_category: schedule_category2, start_on: Date.today, participants: 10
-    booking.resource_bookings.create resource_id: resource2.id
+    other_booking = user2.bookings.create schedule_category: schedule_category2, start_on: Date.today, participants: 10
+    other_booking.resource_bookings.create resource_id: resource2.id
+    available_resources = Bookings::AvailableResources.new(user, Date.current, schedule_category2.id).call
 
-    assert_equal 1, Bookings::AvailableResources.new(user.id, Date.today,
-                                                     schedule_category2.id).call.first.count
+    assert_equal 1, available_resources.first.count
   end
 
   test "invalid booking" do
@@ -28,9 +28,11 @@ class Bookings::AvailableResourcesTest < ActiveSupport::TestCase
 
     booking = user2.bookings.create schedule_category: schedule_category2, start_on: Date.today, participants: 10
     booking.resource_bookings.create resource_id: resource2.id
+    available_resources = Bookings::AvailableResources.new(
+      user, Date.current, schedule_category2.id
+    ).call
 
-    assert Bookings::AvailableResources.new(user.id, Date.today,
-                                            schedule_category2.id).call.first.empty?
+    assert available_resources.last.empty?
   end
 
   test "invalid date" do
@@ -39,9 +41,9 @@ class Bookings::AvailableResourcesTest < ActiveSupport::TestCase
 
     booking = user2.bookings.create schedule_category:, start_on: Date.today, participants: 10
     booking.resource_bookings.create resource_id: resource2.id
+    available_resources = Bookings::AvailableResources.new(user, 2.days.ago, schedule_category.id).call
 
-    assert_equal [ I18n.t("bookings.errors.invalidDate") ], Bookings::AvailableResources.new(user.id, Date.today - 2,
-                                                     schedule_category2.id).call.last
+    assert_equal [ I18n.t("bookings.errors.invalidDate") ], available_resources.last
   end
 
   test "invalid schedule id" do
@@ -50,12 +52,16 @@ class Bookings::AvailableResourcesTest < ActiveSupport::TestCase
 
     booking = user2.bookings.create schedule_category:, start_on: Date.today, participants: 10
     booking.resource_bookings.create resource_id: resource2.id
+    available_resources = Bookings::AvailableResources.new(user, Date.today, 145).call
 
-    assert_equal [ I18n.t("bookings.errors.invalidSchedule") ], Bookings::AvailableResources.new(user.id, Date.today,
-                                                     145).call.last
+    assert_equal [ I18n.t("bookings.errors.invalidSchedule") ], available_resources.last
   end
 
   private
+
+    def account
+      @account ||= accounts(:account)
+    end
 
     def user
       @user ||= users(:admin)

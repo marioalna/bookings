@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
   def edit
     available_resources
     current_info
-    custom_attributes(true)
+    custom_attributes
   end
 
   def update
@@ -43,7 +43,7 @@ class BookingsController < ApplicationController
     else
       available_resources
       current_info
-      custom_attributes(true)
+      custom_attributes
       render "edit", status: :unprocessable_entity
     end
   end
@@ -83,8 +83,8 @@ class BookingsController < ApplicationController
       end
     end
 
-    def custom_attributes(edit = false)
-      @custom_attributes = Bookings::CustomAttributes.new(Current.user, start_on, schedule_category_id, edit).call
+    def custom_attributes
+      @custom_attributes = Bookings::CustomAttributes.new(Current.user, start_on, schedule_category_id).call
     end
 
     def start_on
@@ -100,7 +100,7 @@ class BookingsController < ApplicationController
     end
 
     def available_resources
-      @available_resources, @errors = Bookings::AvailableResources.new(Current.user.id, start_on, schedule_category_id).call
+      @available_resources, @errors = Bookings::AvailableResources.new(Current.user, start_on, schedule_category_id).call
     end
 
     def current_info

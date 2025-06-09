@@ -13,7 +13,7 @@
 .p.mt-6
   %div{id: "bookings-info"}
     = render "shared/notification", title: I18n.t("bookings.currentInfo", num_bookings: @num_bookings, participants: @participants, schedule_name: @schedule_name)
-#resources-list.grid.grid-cols-1.sm:grid-cols-3.gap-6
+#resources-list.grid.grid-cols-1.sm:grid-cols-4.gap-6
   = render partial: 'bookings/resource_booking', collection: @available_resources
 %p{data: {booking_target: "message"}, class: ""}
 .p.mt-6
