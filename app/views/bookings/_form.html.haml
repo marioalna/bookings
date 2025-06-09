@@ -16,6 +16,10 @@
 #resources-list.grid.grid-cols-1.sm:grid-cols-3.gap-6
   = render partial: 'bookings/resource_booking', collection: @available_resources
 %p{data: {booking_target: "message"}, class: ""}
+.p.mt-6
+  #custom-attributes.flex.flex-row.mt-2
+    = render partial: "bookings/custom_attributes/not_available", collection: @custom_attributes[:not_available], as: :not_available
+    = render partial: "bookings/custom_attributes/available", collection: @custom_attributes[:available], as: :available
 .mt-8.border-t.border-gray-200.pt-5
   .flex.justify-between.items-center
     = link_to  t('buttons.cancel'), '#', class: "text-sm font-semibold text-gray-400 hover:text-gray-700", data: { action: 'turbo-modal#close:prevent' }

@@ -1,0 +1,22 @@
+.divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
+  .px-4.py-5.sm:px-6
+    = render 'shared/header', title: t('admin.customAttributes.title') do
+      = render 'shared/button_new',  destination: new_admin_custom_attribute_path, title: t('admin.customAttributes.newTitle'), data: { target: '_top' }
+  .px-4.py-5.sm:p-6
+    - if @custom_attributes.any?
+      %table.mt-2.min-w-full.table-stripped
+        %thead
+          %tr
+            %th{class: th_class.render}
+              = t 'admin.customAttributes.name'
+            %th{class: th_class.render}
+              = t 'admin.customAttributes.block'
+            %th{class: th_class.render}
+        %tbody
+          = render partial: 'admin/custom_attributes/custom_attribute', collection: @custom_attributes
+    - else
+      .mt-6
+        = render 'shared/notification', {title: t('admin.customAttributes.noCustomAttributes')} do
+          .mt-4
+            .-mx-2.flex{class: "-my-1.5"}
+              = link_to t('admin.customAttributes.addFirst'), new_admin_custom_attribute_path, class: "px-2 py-1.5 rounded-md text-sm leading-5 font-medium text-blue-800 hover:bg-blue-100 focus:outline-none focus:bg-blue-100 transition ease-in-out duration-150", target: '_top'

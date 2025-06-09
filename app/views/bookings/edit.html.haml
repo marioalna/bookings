@@ -1,3 +1,3 @@
 = render 'shared/modal', title: t('bookings.newTitle') do
   = tw_form_with model: @booking, data: { turbo: false, controller: :booking, booking_resources_value: resources_for_frontend(@available_resources).as_json, booking_capacity_value: capacity_for_frontend(@available_resources), booking_translations_value: translations_for_frontend.to_json } do |form|
-    = render 'bookings/form', booking: @booking, f: form
+    = render 'bookings/form', booking: @booking, f: form, edit: true

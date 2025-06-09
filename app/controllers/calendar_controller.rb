@@ -12,12 +12,14 @@ class CalendarController < ApplicationController
     @booking = Current.user.bookings.new start_on: booking_date, schedule_category_id: @schedule_categories.first[0]
     available_resources
     current_info
+    custom_attributes
   end
 
   def create
     @booking =  Current.user.bookings.create booking_params
 
     if @booking.persisted?
+      Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).create
       flash.now[:notice] = t('bookings.created')
       @day = {
         day: @booking.start_on,
@@ -26,12 +28,14 @@ class CalendarController < ApplicationController
     else
       available_resources
       current_info
+      custom_attributes
     end
   end
 
   def check
     available_resources
     current_info
+    custom_attributes
   end
 
   private
@@ -46,6 +50,10 @@ class CalendarController < ApplicationController
       else
         Date.parse(params[:date])
       end
+    end
+
+    def custom_attributes
+      @custom_attributes = Bookings::CustomAttributes.new(Current.user, start_on, schedule_category_id, false).call
     end
 
     def find_schedule_categories

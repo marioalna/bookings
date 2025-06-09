@@ -4,6 +4,8 @@ class Booking < ApplicationRecord
 
   has_many :resource_bookings
   has_many :resources, through: :resource_bookings
+  has_many :booking_custom_attributes
+  has_many :custom_attributes, through: :booking_custom_attributes
 
   normalizes :colour, with: ->(colour) { colour&.downcase }
 

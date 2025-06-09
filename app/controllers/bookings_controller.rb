@@ -10,18 +10,22 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Current.user.bookings.new start_on: booking_date, schedule_category_id: @schedule_categories.first[0]
+    @booking_custom_attributes = @booking.booking_custom_attributes.build
     available_resources
     current_info
+    custom_attributes
   end
 
   def create
     @booking =  Current.user.bookings.create booking_params
 
     if @booking.persisted?
+      Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).create
       redirect_to bookings_path, notice: t("bookings.created")
     else
       available_resources
       current_info
+      custom_attributes
       render "new", status: :unprocessable_entity
     end
   end
@@ -29,14 +33,17 @@ class BookingsController < ApplicationController
   def edit
     available_resources
     current_info
+    custom_attributes(true)
   end
 
   def update
     if @booking.update(booking_params)
+      Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).update
       redirect_to bookings_path, notice: t("bookings.updated")
     else
       available_resources
       current_info
+      custom_attributes(true)
       render "edit", status: :unprocessable_entity
     end
   end
@@ -50,6 +57,7 @@ class BookingsController < ApplicationController
   def check
     available_resources
     current_info
+    custom_attributes
   end
 
   private
@@ -73,6 +81,10 @@ class BookingsController < ApplicationController
       else
         Current.user.bookings.find params[:id]
       end
+    end
+
+    def custom_attributes(edit = false)
+      @custom_attributes = Bookings::CustomAttributes.new(Current.user, start_on, schedule_category_id, edit).call
     end
 
     def start_on
