@@ -5,7 +5,13 @@
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
 # Ignore bundler config.
+.DS_Store
+.irb_history
+/.idea
+*.swp
 /.bundle
+
+.kamal/secrets
 
 # Ignore all environment files.
 /.env*
@@ -32,6 +38,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/deploy.yml
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
