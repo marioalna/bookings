@@ -22,7 +22,7 @@ gem "solid_cable"
 gem "sqlite3", ">= 2.1"
 gem "requestjs-rails"
 gem "tailwindcss-rails", "4.1.0"
-gem "tailwindcss-ruby", "4.0.9"
+gem "tailwindcss-ruby", "4.1.10"
 gem "turbo-rails"
 gem "view_component"
 
