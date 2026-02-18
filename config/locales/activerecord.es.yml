@@ -15,3 +15,6 @@ es:
         name: "Nombre"
         max_capacity: "Capacidad máxima"
         photo: "Foto"
+      custom_attribute:
+        name: "Nombre"
+        block_on_schedule: Bloquear por horario
