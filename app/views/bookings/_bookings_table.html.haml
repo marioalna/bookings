@@ -1,0 +1,14 @@
+%table.mt-2.min-w-full.table-stripped.table-responsive
+  %thead
+    %tr
+      %th{class: th_class.render}
+        = t 'bookings.startOn'
+      %th{class: th_class.render}
+        = t 'bookings.scheduleCategory'
+      %th{class: th_class.render}
+        = t 'bookings.user'
+      %th{class: th_class.render(text_align: :right)}
+        = t 'bookings.participants'
+      %th{class: th_class.render}
+  %tbody{id: "bookings-list"}
+    = render partial: 'bookings/booking', collection: bookings
