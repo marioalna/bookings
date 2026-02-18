@@ -1,8 +1,9 @@
 = turbo_frame_tag "modal" do
-  %dialog.rounded-md.shadow-xl.min-w-80.px-10.py-4.my-auto{"aria-labelledby" => "modal_title", data: { controller: "turbo-modal", 'turbo-modal-target': "modalDialog"}}
-    %header
-      .cursor-pointer.z-50{"data-action" => "click->turbo-modal#close"}
-        %svg.fill-current.text-black.size-6{height: "18", viewbox: "0 0 18 18", width: "18", xmlns: "http://www.w3.org/2000/svg"}
-          %path{d: "M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"}
-    #modal_content.my-5
+  %dialog.w-full.max-w-5xl.mx-auto.rounded-xl.shadow-2xl.p-0.my-auto{"aria-labelledby" => "modal_title", data: { controller: "turbo-modal", 'turbo-modal-target': "modalDialog"}}
+    %header.flex.items-center.justify-between.px-6.pt-5.pb-3
+      %span
+      %button.p-2.rounded-lg.text-gray-400.hover:text-gray-600.hover:bg-gray-100.transition.cursor-pointer{type: "button", "data-action" => "click->turbo-modal#close"}
+        %svg.size-5{fill: "currentColor", viewbox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg"}
+          %path{"clip-rule" => "evenodd", d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z", "fill-rule" => "evenodd"}
+    #modal_content.px-6.pb-6.overflow-y-auto{style: "max-height: calc(90vh - 120px)"}
       = yield

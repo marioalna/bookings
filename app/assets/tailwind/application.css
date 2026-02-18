@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+@layer components {
+  .form-input-base {
+    transition-property: border-color, box-shadow, background-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .form-checkbox {
+    min-width: 20px;
+    min-height: 20px;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(4px);
+}
+
+dialog[open] {
+  animation: dialog-open 200ms ease-out;
+}
+
+@keyframes dialog-open {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+::file-selector-button {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: theme(--color-indigo-700);
+  background-color: theme(--color-indigo-50);
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out;
+}
+
+::file-selector-button:hover {
+  background-color: theme(--color-indigo-100);
+}

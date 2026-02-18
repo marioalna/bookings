@@ -1,0 +1,12 @@
+- cancel_text ||= t('buttons.cancel')
+- button_text ||= t('buttons.save')
+- cancel_url ||= nil
+- cancel_data ||= {}
+- button_style ||= :primary
+- button_size ||= :medium
+%div{class: form_actions_class.render}
+  %span.inline-flex
+    = link_to cancel_text, cancel_url, class: "text-sm font-semibold text-gray-400 hover:text-gray-700", data: cancel_data
+  %span.ml-3.inline-flex
+    %button{class: submit_button_class.render(style: button_style, size: button_size), type: "submit"}
+      = button_text

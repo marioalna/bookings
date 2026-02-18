@@ -1,5 +1,5 @@
-= link_to destination, class: "rounded-full bg-blue-50 px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-100", data: data do
-  .flex
+= link_to destination, class: button_class.render(style: :new, size: :medium, shape: :pill), data: data do
+  .flex.items-center
     %svg.-ml-1.mr-2.h-5.w-5{fill: "currentColor", stroke: "currentColor", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2", viewbox: "0 0 24 24"}
       %path{d: "M12 4v16m8-8H4"}
     = title

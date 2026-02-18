@@ -1,13 +1,8 @@
-.mt-6.bg-white.shadow.px-4.py-5.sm:rounded-lg.sm:p-6
-  .md:grid.md:grid-cols-3.md:gap-6
-    .md:col-span-1
-      %h3.text-lg.font-medium.leading-6.text-gray-900
-        = t 'admin.customAttributes.title'
-    .mt-6.md:col-span-2
-      = tw_form_with model: [:admin, custom_attribute], class: "px-10 py-4" do |form|
-        = render partial: 'shared/error_messages', locals:  {error_messages: custom_attribute.errors.full_messages}
-        = form.text_input :name
-        .mt-4
-          = form.check_input :block_on_schedule
-        .mt-8.border-t.border-gray-200.pt-5
-          = render partial: 'shared/button', locals:  {cancel_text: t('buttons.cancel'), cancel_url: admin_custom_attributes_path, button_text: t('buttons.save')}
+= render 'shared/form_card', title: t('admin.customAttributes.title') do
+  = tw_form_with model: [:admin, custom_attribute] do |form|
+    = render 'shared/form_errors', errors: custom_attribute.errors
+    .space-y-1
+      = form.text_input :name
+      .mt-4
+        = form.check_input :block_on_schedule
+    = render 'shared/form_actions', cancel_url: admin_custom_attributes_path
