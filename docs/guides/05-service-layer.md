@@ -149,7 +149,7 @@ Bookings::AvailableResources.new(current_user, date, schedule_category_id).call
 
 ### Bug: `.to_date` Without Rescue
 
-Line 34 calls `date.to_date` without error handling. If `date` is an invalid string, this will raise `Date::Error`. See [12-bugs-and-tech-debt.md](12-bugs-and-tech-debt.md) BUG-13.
+Line 37 calls `date.to_date` without error handling. A `nil?` check guards against nil, but if `date` is an invalid non-nil string, this will raise `Date::Error`. See [12-bugs-and-tech-debt.md](12-bugs-and-tech-debt.md) BUG-13.
 
 ### Usage
 

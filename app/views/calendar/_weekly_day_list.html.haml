@@ -1,0 +1,13 @@
+- days_with_bookings = week.select { |day| day[:bookings].present? }
+- if days_with_bookings.empty?
+  .px-4.py-6.text-center.text-sm.text-gray-500
+    = t('calendar.weekly.no_bookings')
+- else
+  .divide-y.divide-gray-100
+    - days_with_bookings.each do |day|
+      .px-4.py-3
+        %h4.text-sm.font-semibold.text-gray-900.capitalize
+          = l(day[:day], format: :day_name_number)
+        %ol.mt-1.space-y-1
+          - day[:bookings].each do |result|
+            = render partial: "shared/booking_card", locals: { schedule_category_name: result.schedule_category_name, schedule_category_colour: result.schedule_category_colour, participants: result.participants }

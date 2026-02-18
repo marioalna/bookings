@@ -1,7 +1,7 @@
 %li.group.flex.p-4.pr-6.focus-within:bg-gray-50.hover:bg-gray-50
   .flex-auto
     %p
-      %span{class: "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-orange-100 text-orange-800"}
+      %span{class: "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-#{booking.schedule_category.colour}-100 text-#{booking.schedule_category.colour}-800"}
         = "#{booking.schedule_category.name} #{booking.participants}"
     %p.mt-2.text-gray-700
       = booking.user.username

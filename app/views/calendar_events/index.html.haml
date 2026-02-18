@@ -1,2 +1,5 @@
 = turbo_frame_tag 'calendar_events_mid' do
+  .px-4.py-3
+    %h3.text-base.font-semibold.text-gray-900.capitalize
+      = l(@date, format: :day_name_number)
   = render partial: 'calendar_events/calendar_event', collection: @bookings.order(:schedule_category_id), as: :booking

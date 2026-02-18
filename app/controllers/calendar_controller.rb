@@ -5,7 +5,9 @@ class CalendarController < ApplicationController
 
   def index
     monthly_info = Bookings::Calendar.call Current.account, @date.strftime("%Y-%m")
-    @weeks = monthly_info.each_slice(7)
+    @weeks = monthly_info.each_slice(7).to_a
+    @total_weeks = @weeks.size
+    @current_week_index = current_week_index
   end
 
   def new
@@ -94,6 +96,14 @@ class CalendarController < ApplicationController
                   .for_today(start_on)
                   .group(:start_on, :schedule_category_id)
                   .select("bookings.start_on, sum(bookings.participants) as participants, schedule_categories.name as schedule_category_name, schedule_categories.colour as schedule_category_colour")
+    end
+
+    def current_week_index
+      target = (@date.month == Date.current.month && @date.year == Date.current.year) ? Date.current : @date.beginning_of_month
+      @weeks.each_with_index do |week, i|
+        return i if week.any? { |day| day[:day] == target }
+      end
+      0
     end
 
     def booking_date

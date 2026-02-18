@@ -1,0 +1,20 @@
+en:
+  activerecord:
+    attributes:
+      booking:
+        start_on: "Date"
+        schedule_category_id: "Schedule"
+        participants: "Diners"
+      user:
+        name: "Name"
+        username: "Username"
+        password: "Password"
+      schedule_category:
+        name: "Name"
+      resource:
+        name: "Name"
+        max_capacity: "Max capacity"
+        photo: "Photo"
+      custom_attribute:
+        name: "Name"
+        block_on_schedule: "Block on schedule"

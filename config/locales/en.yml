@@ -1,5 +1,17 @@
 en:
   admin:
+    customAttributes:
+      addFirst: "Add first custom attribute"
+      created: "Custom attribute created"
+      deleted: "Custom attribute deleted"
+      block: "Block"
+      false1: "No"
+      name: "Name"
+      newTitle: "New custom attribute"
+      noCustomAttributes: "There are no custom attributes yet"
+      title: "Custom attributes"
+      true1: "Yes"
+      updated: "Custom attribute updated"
     resources:
       addFirst: "Add first resource"
       created: "Resource created"
@@ -47,13 +59,14 @@ en:
       notEnough: "You have X diners pending to assign."
     allUsers: "All users"
     allResources: "All resources"
+    customAttributes: "Custom attributes"
     errors:
-      noResourcesAvailable: "There are no resources available for this date and schedule"
+      invalidCapacity: "The requested capacity exceeds the resource's maximum capacity."
       invalidDate: "You have to choose a future date"
       invalidSchedule: "Invalid schedule"
-      noResourcesAvailable: "No hay recursos disponibles para esta fecha y horario."
-      takenByUser: "Ya tienes una reservado este recurso para esta fecha y horario."
-      takenByOtherUser: "Otro usuario ya tiene reservado este recurso para esta fecha y horario."
+      noResourcesAvailable: "There are no resources available for this date and schedule."
+      takenByUser: "You already have this resource booked for this date and schedule."
+      takenByOtherUser: "Another user already has this resource booked for this date and schedule."
       userTaken: "already have a booking for this day and schedule."
     noBookings: "There is no bookings yet"
     created: "Booking created"
@@ -91,16 +104,21 @@ en:
       short: "Su"
       long: "Sun"
     title: "Calendar"
+    weekly:
+      week: "Week"
+      no_bookings: "No bookings this week"
   date:
     default: "%-d-%m-%Y"
     formats:
       default: "%-d-%m-%Y"
       month_name: "%B"
       month_year: "%B %Y"
+      day_name_number: "%A %-d"
   formErrors:
     pleaseReview: "Please, check errors."
   menu:
     bookings: "Bookings"
+    customAttributes: "Custom attributes"
     calendar: "Calendar"
     resources: "Resources"
     scheduleCategories: "Schedules"

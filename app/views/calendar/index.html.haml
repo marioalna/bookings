@@ -28,5 +28,6 @@
         = t 'calendar.sunday.long'
     = render 'calendar/large_calendar'
     = render 'calendar/mid_calendar'
-  %ol.mt-10.divide-y.divide-gray-100.overflow-hidden.rounded-lg.bg-white.text-sm
+  %ol.mt-4.divide-y.divide-gray-100.overflow-hidden.rounded-lg.bg-white.text-sm.lg:mt-10
     = turbo_frame_tag 'calendar_events_mid'
+  = render 'calendar/weekly_bookings'
