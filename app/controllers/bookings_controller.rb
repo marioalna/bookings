@@ -36,14 +36,22 @@ class BookingsController < ApplicationController
   end
 
   def update
-    if @booking.update(booking_params)
-      Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).update
-      redirect_to bookings_path, notice: t("bookings.updated")
-    else
+    Booking.transaction do
+      @booking.resource_bookings.delete_all
+      if @booking.update(booking_params)
+        Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).update
+      else
+        raise ActiveRecord::Rollback
+      end
+    end
+
+    if @booking.errors.any?
       available_resources
       current_info
       custom_attributes
       render "edit", status: :unprocessable_entity
+    else
+      redirect_to bookings_path, notice: t("bookings.updated")
     end
   end
 

@@ -5,6 +5,10 @@
     = render Notifications::FlashComponent.new(flash)
   = turbo_stream.replace @day[:day] do
     = render 'calendar/large_day', day: @day
+  = turbo_stream.replace "mid_#{@day[:day]}" do
+    = render 'calendar/mid_day', day: @day
+  = turbo_stream.replace 'weekly_bookings' do
+    = render 'calendar/weekly_bookings'
 - else
   = turbo_stream.update 'modal_content' do
     = tw_form_with model: @booking, url: calendar_index_path, data: { turbo: true, controller: :booking, booking_resources_value: resources_for_frontend(@available_resources).as_json, booking_capacity_value: capacity_for_frontend(@available_resources), booking_translations_value: translations_for_frontend.to_json } do |form|

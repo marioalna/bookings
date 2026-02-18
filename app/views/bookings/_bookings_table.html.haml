@@ -10,5 +10,7 @@
       %th{class: th_class.render(text_align: :right)}
         = t 'bookings.participants'
       %th{class: th_class.render}
+        = t 'bookings.customAttributes'
+      %th{class: th_class.render}
   %tbody{id: "bookings-list"}
     = render partial: 'bookings/booking', collection: bookings

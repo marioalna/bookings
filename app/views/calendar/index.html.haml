@@ -1,14 +1,18 @@
 .divide-y.divide-gray-200.overflow-hidden.rounded-lg.bg-white.shadow
   .px-4.py-5.sm:px-6
-    .flex.items-center.justify-center
-      .w-6.mr-3
-        = link_to calendar_index_path(date: @date - 1.month), class: "w-5 h-5" do
-          = image_tag 'icons/left_arrow.svg'
-      %h2.flex.items-center.text-2xl.font-bold.leading-7.text-neutral-800.sm:text-3xl.sm:leading-9.sm:truncate
-        = (l @date, format: :month_year)
-      .w-6.ml-3
-        = link_to calendar_index_path(date: @date + 1.month), class: "w-5 h-5" do
-          = image_tag 'icons/right_arrow.svg'
+    .flex.items-center.justify-between.gap-4
+      .flex-1
+      .flex.items-center
+        .w-6.mr-3
+          = link_to calendar_index_path(date: @date - 1.month), class: "w-5 h-5" do
+            = image_tag 'icons/left_arrow.svg'
+        %h2.flex.items-center.text-2xl.font-bold.leading-7.text-neutral-800.sm:text-3xl.sm:leading-9.sm:truncate
+          = (l @date, format: :month_year)
+        .w-6.ml-3
+          = link_to calendar_index_path(date: @date + 1.month), class: "w-5 h-5" do
+            = image_tag 'icons/right_arrow.svg'
+      .flex-1.flex.justify-end
+        = render 'shared/button_new', destination: new_calendar_path(date: Date.current), title: t('bookings.newTitle'), data: { turbo_frame: 'modal' }
 .px-4.py-5.sm:p-6
   .mt-2.shadow.lg:flex.lg:flex-auto.lg:flex-col
     .grid.grid-cols-7.gap-px.border-b.border-gray-300.bg-gray-200.text-center.text-xs.font-semibold.leading-6.text-gray-700.lg:flex-none

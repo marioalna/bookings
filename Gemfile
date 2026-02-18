@@ -37,6 +37,7 @@ gem "bootsnap", require: false
 gem "thruster", require: false
 
 group :development, :test do
+  gem "minitest", "~> 5.25"
   gem "brakeman", require: false
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "faker"

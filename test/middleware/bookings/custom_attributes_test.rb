@@ -14,6 +14,20 @@ class Bookings::CustomAttributesTest < ActiveSupport::TestCase
     assert_equal custom_attribute2, result[:available].first
   end
 
+  test 'non-blocking custom attribute is always available even when taken' do
+    non_blocking = accounts(:account).custom_attributes.create(name: "Vajilla", block_on_schedule: false)
+
+    booking = regular_user.bookings.create(
+      schedule_category:, start_on: Date.today, participants: 5
+    )
+    booking.booking_custom_attributes.create(custom_attribute_id: non_blocking.id)
+
+    result = Bookings::CustomAttributes.new(users(:admin), Date.today, schedule_category.id).call
+
+    assert_includes result[:available], non_blocking
+    refute_includes result[:not_available], non_blocking
+  end
+
   test 'all custom attributes available' do
     custom_attribute2
 

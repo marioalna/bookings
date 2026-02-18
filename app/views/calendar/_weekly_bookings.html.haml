@@ -1,11 +1,12 @@
-.lg:hidden.mt-4.overflow-hidden.rounded-lg.bg-white.shadow{"data-controller" => "week-navigation", "data-week-navigation-current-value" => @current_week_index, "data-week-navigation-total-value" => @total_weeks}
-  .flex.items-center.justify-between.px-4.py-2
-    %button.p-2.text-gray-600.hover:text-gray-900{"data-action" => "week-navigation#previous"}
-      = image_tag 'icons/left_arrow.svg', class: "w-5 h-5"
-    %span.text-sm.font-medium.text-gray-700{"data-week-navigation-target" => "label"}
-      = "#{t('calendar.weekly.week')} #{@current_week_index + 1} de #{@total_weeks}"
-    %button.p-2.text-gray-600.hover:text-gray-900{"data-action" => "week-navigation#next"}
-      = image_tag 'icons/right_arrow.svg', class: "w-5 h-5"
-  - @weeks.each do |week|
-    .hidden{"data-week-navigation-target" => "week"}
-      = render partial: 'calendar/weekly_day_list', locals: { week: week }
+#weekly_bookings
+  .lg:hidden.mt-4.overflow-hidden.rounded-lg.bg-white.shadow{"data-controller" => "week-navigation", "data-week-navigation-current-value" => @current_week_index, "data-week-navigation-total-value" => @total_weeks}
+    .flex.items-center.justify-between.px-4.py-2
+      %button.p-2.text-gray-600.hover:text-gray-900{"data-action" => "week-navigation#previous"}
+        = image_tag 'icons/left_arrow.svg', class: "w-5 h-5"
+      %span.text-sm.font-medium.text-gray-700{"data-week-navigation-target" => "label"}
+        = "#{t('calendar.weekly.week')} #{@current_week_index + 1} de #{@total_weeks}"
+      %button.p-2.text-gray-600.hover:text-gray-900{"data-action" => "week-navigation#next"}
+        = image_tag 'icons/right_arrow.svg', class: "w-5 h-5"
+    - @weeks.each do |week|
+      .hidden{"data-week-navigation-target" => "week"}
+        = render partial: 'calendar/weekly_day_list', locals: { week: week }

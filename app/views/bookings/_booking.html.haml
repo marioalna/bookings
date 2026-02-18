@@ -9,6 +9,11 @@
       = booking.user.name
   %td{class: td_class.render(text_align: :right)}
     = booking.participants
+  %td{class: td_class.render}
+    - if booking.custom_attributes.any?
+      = booking.custom_attributes.map(&:name).join(", ")
+    - else
+      No
   - if can_edit?(booking)
     %td{class: td_class.render}
       .flex.gap-x-4.justify-end

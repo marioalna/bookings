@@ -8,11 +8,11 @@ module Bookings
 
     def call
       if user_id.present?
-        account.bookings.where(start_on: dates_range, user_id: params[:user_id]).order(:start_on, :schedule_category_id)
+        account.bookings.where(start_on: dates_range, user_id: params[:user_id]).includes(:custom_attributes).order(:start_on, :schedule_category_id)
       elsif resource_id.present?
-        account.bookings.joins(:resources).where(start_on: dates_range, resources: { id: resource_id }).order(:start_on, :schedule_category_id)
+        account.bookings.joins(:resources).where(start_on: dates_range, resources: { id: resource_id }).includes(:custom_attributes).order(:start_on, :schedule_category_id)
       else
-        account.bookings.where(start_on: dates_range).order(:start_on, :schedule_category_id)
+        account.bookings.where(start_on: dates_range).includes(:custom_attributes).order(:start_on, :schedule_category_id)
       end
     end
 

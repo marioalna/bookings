@@ -27,6 +27,7 @@ class CalendarController < ApplicationController
         day: @booking.start_on,
         bookings: bookings_for_day
       }
+      build_weekly_data
     else
       available_resources
       current_info
@@ -41,6 +42,14 @@ class CalendarController < ApplicationController
   end
 
   private
+
+    def build_weekly_data
+      @date = @booking.start_on
+      monthly_info = Bookings::Calendar.call Current.account, @date.strftime("%Y-%m")
+      @weeks = monthly_info.each_slice(7).to_a
+      @total_weeks = @weeks.size
+      @current_week_index = current_week_index
+    end
 
     def booking_params
       params.require(:booking).permit(:start_on, :schedule_category_id, :participants, resource_bookings_attributes: %i[resource_id])

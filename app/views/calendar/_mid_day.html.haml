@@ -1,5 +1,5 @@
 - total_results = day[:bookings].presence || []
-%div{class: "flex h-14 flex-col bg-stone-50 hover:bg-gray-100 focus:z-10 #{ day[:day] == Date.current ? "text-indigo-600 font-semibold " : "text-gray-500 " }"}
+%div{id: "mid_#{day[:day]}", class: "flex h-14 flex-col bg-stone-50 hover:bg-gray-100 focus:z-10 #{ day[:day] == Date.current ? "text-indigo-600 font-semibold " : "text-gray-500 " }"}
   %time{class: "ml-auto #{ day[:day] == Date.current ? "mt-1 flex mr-1 h-6 w-6 items-center text-white justify-center rounded-full bg-indigo-600 " : "flex h-6 w-6 pr-1 items-center text-gray-400 justify-center rounded-full " }"}
     = day[:day].strftime('%d')
   = link_to calendar_events_url(date: day[:day]), data: { turbo_frame: 'calendar_events_mid' }, class: "px-2 flex gap-1 justify-center" do

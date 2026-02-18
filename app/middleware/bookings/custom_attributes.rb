@@ -11,7 +11,11 @@ module Bookings
       available_attributes = []
 
       custom_attributes.each do |custom_attribute|
-        next unless custom_attribute.block_on_schedule
+        unless custom_attribute.block_on_schedule
+          available_attributes << custom_attribute
+          next
+        end
+
         if invalid_attribute?(custom_attribute)
           not_available_attributes << custom_attribute
         else
