@@ -1,0 +1,11 @@
+- if @booking.valid?
+  = turbo_stream.update 'modal' do
+    %div
+  = turbo_stream.replace 'flash-messages' do
+    = render Notifications::FlashComponent.new(flash)
+  = turbo_stream.append 'bookings-list' do
+    = render partial: 'bookings/booking', locals: { booking: @booking }
+- else
+  = turbo_stream.update 'modal_content' do
+    = tw_form_with model: @booking, data: { turbo: true, controller: :booking, booking_resources_value: resources_for_frontend(@available_resources).as_json, booking_capacity_value: capacity_for_frontend(@available_resources), booking_translations_value: translations_for_frontend.to_json } do |form|
+      = render 'bookings/form', booking: @booking, f: form, edit: false

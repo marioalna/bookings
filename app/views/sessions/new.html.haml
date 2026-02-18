@@ -1,23 +1,19 @@
-%section{class: "h-full"}
-  %div{class: "flex flex-col items-center justify-center px-6 py-8  h-full  lg:py-0"}
-    %div{class:"h-1/2 bg-white rounded-lg shadow mx-auto sm:my-auto md:mt-0 sm:max-w-md p-6 space-y-4 md:space-y-6 sm:p-7"}
-      %h1.text-xl.font-bold.leading-tight.tracking-tight.text-gray-900.md:text-2xl
+%section.h-full
+  .flex.flex-col.items-center.justify-center.px-6.py-8.h-full.lg:py-0
+    %div{class: form_card_class.render(padding: :spacious, width: :md)}
+      %h1.text-xl.font-bold.leading-tight.tracking-tight.text-gray-900.md:text-2xl.text-center
         = t('sessions.form.signIn')
-      = tw_form_with url: session_path, class: "h-full" do |form|
-        %div{class: "py-4"}
-          %label.block.mb-2.text-md.font-medium.text-gray-900{:for => "email"} 
-            = t('sessions.form.email')
-          = form.email_field :email, placeholder: t('sessions.form.placeholderEmail'), value: params[:email], class: "h-16 bg-gray-50 border border-gray-300 pl-6 text-gray-900 rounded-lg focus:ring-blue-600 placeholder:pl-6 focus:border-teal-600 block w-full"
-        %div{class: "mb-4"}
-          %label.block.mb-2.text-md.font-medium.text-gray-900{:for => "password"}
-            = t('sessions.form.password')
-          = form.password_field :password, autocomplete: "current-password", placeholder: "******", maxlength: 72, class: "h-16 bg-gray-50 border border-gray-300 pl-6 text-gray-900 rounded-lg focus:ring-blue-600 placeholder:pl-6 focus:border-teal-600 block w-full"
+      = tw_form_with url: session_path, class: "mt-6 space-y-5" do |form|
+        %div
+          = form.email_input :email, placeholder: t('sessions.form.placeholderEmail'), value: params[:email]
+        %div
+          = form.password_input :password, autocomplete: "current-password", placeholder: "******", maxlength: 72
         .flex.items-center.justify-end
-          %a.text-md.font-medium.text-blue-600.hover:underline{:href => new_password_path}
+          %a.text-sm.font-medium.text-blue-600.hover:underline{:href => new_password_path}
             = t('sessions.form.forgotPassword')
-        %div{class: "mt-4"}
-          = form.submit t('sessions.form.signInButton'), class: "w-full py-4 text-white bg-blue-600 hover:bg-blue-700 hover:cursor-pointer focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 text-center"
-          %p.text-md.font-light.text-gray-500.mt-4
+        .mt-2
+          = form.submit t('sessions.form.signInButton'), class: submit_button_class.render(style: :auth, size: :full)
+          %p.text-sm.font-light.text-gray-500.mt-4.text-center
             = t('sessions.form.noAccount')
             %a.font-medium.text-blue-600.hover:underline{:href => "#"}
               = t('sessions.form.signUp')

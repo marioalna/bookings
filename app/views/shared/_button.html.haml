@@ -1,6 +1,1 @@
-.flex.justify-between.items-center
-  %span.inline-flex
-    = link_to cancel_text, cancel_url, class: "text-sm font-semibold text-gray-400 hover:text-gray-700"
-  %span.ml-3.inline-flex
-    %button{class: "rounded-full bg-indigo-50 px-3.5 py-2.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"}
-      = button_text
+= render 'shared/form_actions', cancel_text: cancel_text, cancel_url: cancel_url, button_text: button_text

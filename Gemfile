@@ -14,6 +14,7 @@ gem "jbuilder"
 gem "haml"
 gem "image_processing", "~> 1.2"
 gem "kamal", require: false
+gem "rails-i18n", "~> 8.0"
 gem "propshaft"
 gem "puma", ">= 6.0"
 gem "solid_cache"

@@ -1,14 +1,8 @@
-.mt-6.bg-white.shadow.px-4.py-5.sm:rounded-lg.sm:p-6
-  .md:grid.md:grid-cols-3.md:gap-6
-    .md:col-span-1
-      %h3.text-lg.font-medium.leading-6.text-gray-900
-        = t 'admin.resources.title'
-    .mt-6.md:col-span-2
-      = tw_form_with model: [:admin, resource], class: "px-10 py-4" do |form|
-        = render 'shared/error_messages', error_messages: resource.errors.full_messages
-        = form.text_input :name
-        = form.number_input :max_capacity
-        .mt-1
-          = form.file_input :photo
-        .mt-8.border-t.border-gray-200.pt-5
-          = render 'shared/button', cancel_text: t('buttons.cancel'), cancel_url: admin_resources_path, button_text: t('buttons.save')
+= render 'shared/form_card', title: t('admin.resources.title') do
+  = tw_form_with model: [:admin, resource] do |form|
+    = render 'shared/form_errors', errors: resource.errors
+    .space-y-1
+      = form.text_input :name
+      = form.number_input :max_capacity
+      = form.file_input :photo
+    = render 'shared/form_actions', cancel_url: admin_resources_path

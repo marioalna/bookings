@@ -1,3 +1,4 @@
-.mx-4
-  = check_box_tag "custom_attribute_ids[]", available.id, false, id: "checkbox_#{available.id}"
-  = label_tag "checkbox_#{available.id}", available.name
+%label.inline-flex.items-center.gap-2.px-3.py-2.border.border-gray-300.rounded-lg.cursor-pointer.hover:border-indigo-400.hover:bg-indigo-50.transition.select-none{for: "checkbox_#{available.id}"}
+  = check_box_tag "custom_attribute_ids[]", available.id, false, id: "checkbox_#{available.id}", class: "form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+  %span.text-sm.font-medium.text-gray-700
+    = available.name

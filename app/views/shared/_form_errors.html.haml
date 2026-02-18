@@ -1,0 +1,13 @@
+- if errors.present?
+  - error_list = errors.respond_to?(:full_messages) ? errors.full_messages : Array(errors)
+  - if error_list.any?
+    .rounded-lg.border.border-red-200.bg-red-50.p-4{"animate" => "[fade-in-down_300ms_ease-out]"}
+      .flex.gap-3
+        %svg.h-5.w-5.text-red-400.shrink-0.mt-0.5{fill: "currentColor", viewbox: "0 0 20 20"}
+          %path{"clip-rule" => "evenodd", d: "M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z", "fill-rule" => "evenodd"}
+        %div
+          %h4.text-sm.font-medium.text-red-800
+            = t('formErrors.pleaseReview', total: error_list.size)
+          %ul.mt-2.list-disc.pl-5.space-y-1.text-sm.text-red-700{role: "list"}
+            - error_list.each do |error|
+              %li= error

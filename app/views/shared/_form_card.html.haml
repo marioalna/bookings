@@ -1,0 +1,13 @@
+- padding ||= :normal
+- width ||= :full
+- title ||= nil
+- description ||= nil
+%div{class: form_card_class.render(padding: padding, width: width)}
+  - if title.present?
+    .mb-6
+      %h3{class: form_title_class.render}
+        = title
+      - if description.present?
+        %p.mt-1.text-sm.text-gray-500
+          = description
+  = yield

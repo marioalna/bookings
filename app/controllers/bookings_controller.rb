@@ -17,16 +17,15 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking =  Current.user.bookings.create booking_params
+    @booking = Current.user.bookings.create booking_params
 
     if @booking.persisted?
       Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).create
-      redirect_to bookings_path, notice: t("bookings.created")
+      flash.now[:notice] = t("bookings.created")
     else
       available_resources
       current_info
       custom_attributes
-      render "new", status: :unprocessable_entity
     end
   end
 

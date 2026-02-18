@@ -46,6 +46,13 @@ class Bookings::AvailableResourcesTest < ActiveSupport::TestCase
     assert_equal [ I18n.t("bookings.errors.invalidDate") ], available_resources.last
   end
 
+  test "nil date" do
+    available_resources, errors = Bookings::AvailableResources.new(user, nil, schedule_category.id).call
+
+    assert_equal [I18n.t("bookings.errors.invalidDate")], errors
+    assert_empty available_resources
+  end
+
   test "invalid schedule id" do
     booking = user.bookings.create schedule_category:, start_on: Date.today, participants: 10
     booking.resource_bookings.create resource_id: resource.id

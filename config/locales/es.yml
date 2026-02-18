@@ -66,6 +66,7 @@ es:
       noResourcesAvailable: "No hay recursos disponibles para esta fecha y horario."
       takenByUser: "Ya tienes una reservado este recurso para esta fecha y horario."
       takenByOtherUser: "Otro usuario ya tiene reservado este recurso para esta fecha y horario."
+      invalidCapacity: "La capacidad solicitada excede la capacidad máxima del recurso."
       userTaken: "No puedes realizar otra reserva para el mismo día y horario"
     noBookings: "No has hecho ninguna reserva."
     created: "Reserva creada"
@@ -103,6 +104,9 @@ es:
       short: "D"
       long: "Dom"
     title: "Calendario"
+    weekly:
+      week: "Semana"
+      no_bookings: "Sin reservas esta semana"
   date:
     abbr_day_names:
       - dom
@@ -138,6 +142,7 @@ es:
       default: "%-d-%m-%Y"
       month_name: "%B"
       month_year: "%B %Y"
+      day_name_number: "%A %-d"
     month_names:
       -
       - Enero
