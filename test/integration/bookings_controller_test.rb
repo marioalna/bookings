@@ -22,9 +22,9 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
     resource = resources(:resource)
     params = { booking: { start_on: 3.days.from_now, schedule_category_id: schedule_category.id, participants: 5, resource_bookings_attributes: { "0": { resource_id: resource.id }, "1": { resource_id: "" } } } }
 
-    post bookings_path, params: params
+    post bookings_path, params: params, as: :turbo_stream
 
-    assert_response :redirect
+    assert_response :success
 
     booking = Booking.last
 

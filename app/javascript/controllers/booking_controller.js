@@ -8,6 +8,11 @@ export default class extends Controller {
 
   connect() {
     this.resourcesAssigned = [];
+    this.element.querySelectorAll('[data-resource-target="resource"]').forEach((input) => {
+      if (input.value) {
+        this.resourcesAssigned.push(parseInt(input.value));
+      }
+    });
   }
 
   toggle(event) {
