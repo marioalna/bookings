@@ -31,4 +31,16 @@ class CalendarControllerTest < ActionDispatch::IntegrationTest
     assert_equal 5, booking.participants
     assert_equal 1, booking.resource_bookings.count
   end
+
+  test "cannot create booking when schedule is blocked" do
+    blocked = bookings(:blocked_booking)
+    params = { booking: { start_on: blocked.start_on,
+      schedule_category_id: blocked.schedule_category_id,
+      participants: 5,
+      resource_bookings_attributes: { "0": { resource_id: resources(:resource).id } } } }
+
+    assert_no_difference "Booking.count" do
+      post calendar_index_path, params: params, as: :turbo_stream
+    end
+  end
 end

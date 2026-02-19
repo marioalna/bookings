@@ -18,20 +18,30 @@ class CalendarController < ApplicationController
   end
 
   def create
-    @booking =  Current.user.bookings.create booking_params
-
-    if @booking.persisted?
-      Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).create
-      flash.now[:notice] = t('bookings.created')
+    if Current.user.admin? && params[:booking][:blocked] == "1"
+      @booking = Bookings::BlockSchedule.new(Current.user, params[:booking][:start_on], params[:booking][:schedule_category_id]).call
+      flash.now[:notice] = t("bookings.blocked_created")
       @day = {
         day: @booking.start_on,
         bookings: bookings_for_day
       }
       build_weekly_data
     else
-      available_resources
-      current_info
-      custom_attributes
+      @booking = Current.user.bookings.create booking_params
+
+      if @booking.persisted?
+        Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).create
+        flash.now[:notice] = t("bookings.created")
+        @day = {
+          day: @booking.start_on,
+          bookings: bookings_for_day
+        }
+        build_weekly_data
+      else
+        available_resources
+        current_info
+        custom_attributes
+      end
     end
   end
 
@@ -98,13 +108,14 @@ class CalendarController < ApplicationController
       @num_bookings = info[:num_bookings]
       @participants = info[:participants]
       @schedule_name = info[:schedule_name]
+      @schedule_blocked = info[:blocked]
     end
 
     def bookings_for_day
       Current.account.bookings
                   .for_today(start_on)
                   .group(:start_on, :schedule_category_id)
-                  .select("bookings.start_on, sum(bookings.participants) as participants, schedule_categories.name as schedule_category_name, schedule_categories.colour as schedule_category_colour")
+                  .select("bookings.start_on, sum(bookings.participants) as participants, schedule_categories.name as schedule_category_name, schedule_categories.colour as schedule_category_colour, MAX(CASE WHEN bookings.blocked = 1 THEN 1 ELSE 0 END) as schedule_blocked")
     end
 
     def current_week_index

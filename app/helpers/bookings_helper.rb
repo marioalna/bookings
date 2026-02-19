@@ -31,6 +31,9 @@ module BookingsHelper
       },
       "exceeded": {
         translation: I18n.t('bookings.assign.exceeded')
+      },
+      "blocked": {
+        translation: I18n.t('bookings.blocked')
       }
     }
   end

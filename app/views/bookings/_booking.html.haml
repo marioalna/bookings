@@ -4,18 +4,24 @@
   %td{class: td_class.render}
     %ol
       = render partial: "shared/booking_card", locals: {schedule_category_name: booking.schedule_category.name, schedule_category_colour: booking.schedule_category.colour, participants: nil}
+    - if booking.blocked?
+      %span.inline-flex.items-center.px-2.py-0.5.rounded.text-xs.font-medium.bg-red-100.text-red-800
+        = t('bookings.blocked')
   %td{class: td_class.render}
     = link_to bookings_path(user_id: booking.user_id), class: link_class.render do
       = booking.user.name
-  %td{class: td_class.render(text_align: :right)}
-    = booking.participants
   %td{class: td_class.render}
-    - if booking.custom_attributes.any?
-      = booking.custom_attributes.map(&:name).join(", ")
-    - else
-      No
+    - if !booking.blocked?
+      - if booking.custom_attributes.any?
+        = booking.custom_attributes.map(&:name).join(", ")
+      - else
+        No
+  %td{class: td_class.render(text_align: :right)}
+    - if !booking.blocked?
+      = booking.participants
   - if can_edit?(booking)
     %td{class: td_class.render}
       .flex.gap-x-4.justify-end
-        = render 'shared/button_edit', destination: edit_booking_path(booking), data: { turbo_frame: 'modal' }
+        - unless booking.blocked?
+          = render 'shared/button_edit', destination: edit_booking_path(booking), data: { turbo_frame: 'modal' }
         = render 'shared/button_delete', destination: {model: booking}

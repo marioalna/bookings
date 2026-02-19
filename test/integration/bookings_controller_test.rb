@@ -62,6 +62,54 @@ class BookingsControllerTest < ActionDispatch::IntegrationTest
   end
 
 
+  test "admin can create a blocked booking" do
+    schedule_category = schedule_categories(:schedule_category)
+    params = { booking: { start_on: 5.days.from_now, schedule_category_id: schedule_category.id, participants: 0, blocked: "1" } }
+
+    assert_difference "Booking.count" do
+      post bookings_path, params: params, as: :turbo_stream
+    end
+
+    assert_response :success
+    booking = Booking.last
+    assert booking.blocked?
+    assert_equal 0, booking.participants
+  end
+
+  test "regular user cannot create a blocked booking" do
+    log_in_user
+    schedule_category = schedule_categories(:schedule_category)
+    params = { booking: { start_on: 5.days.from_now, schedule_category_id: schedule_category.id, participants: 5, blocked: "1",
+      resource_bookings_attributes: { "0": { resource_id: resources(:resource).id } } } }
+
+    post bookings_path, params: params, as: :turbo_stream
+
+    booking = Booking.last
+    refute booking.blocked?
+  end
+
+  test "cannot create booking when schedule is blocked" do
+    blocked = bookings(:blocked_booking)
+    params = { booking: { start_on: blocked.start_on,
+      schedule_category_id: blocked.schedule_category_id,
+      participants: 5,
+      resource_bookings_attributes: { "0": { resource_id: resources(:resource).id } } } }
+
+    assert_no_difference "Booking.count" do
+      post bookings_path, params: params, as: :turbo_stream
+    end
+  end
+
+  test "cannot update a blocked booking" do
+    blocked = bookings(:blocked_booking)
+    params = { booking: { participants: 10 } }
+
+    put booking_path(blocked), params: params
+
+    assert_response :redirect
+    assert_equal 0, blocked.reload.participants
+  end
+
     private
 
       def booking

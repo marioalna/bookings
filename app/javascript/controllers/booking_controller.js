@@ -3,7 +3,7 @@ import { post } from "@rails/request.js";
 
 // Connects to data-controller="booking"
 export default class extends Controller {
-  static targets = ["startOn", "participants", "scheduleCategoryId", "message"];
+  static targets = ["startOn", "participants", "scheduleCategoryId", "message", "blocked", "blockedWarning", "bookingDetails"];
   static values = { resources: Object, capacity: Number, translations: Object };
 
   connect() {
@@ -80,6 +80,20 @@ export default class extends Controller {
   removeClassList() {
     while (this.messageTarget.classList.length > 0) {
       this.messageTarget.classList.remove(this.messageTarget.classList.item(0));
+    }
+  }
+
+  toggleBlocked() {
+    if (!this.hasBlockedTarget) return;
+
+    const isBlocked = this.blockedTarget.checked;
+
+    if (this.hasBookingDetailsTarget) {
+      this.bookingDetailsTarget.classList.toggle("hidden", isBlocked);
+    }
+
+    if (this.hasBlockedWarningTarget) {
+      this.blockedWarningTarget.classList.toggle("hidden", !isBlocked);
     }
   }
 

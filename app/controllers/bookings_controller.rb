@@ -17,15 +17,20 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Current.user.bookings.create booking_params
-
-    if @booking.persisted?
-      Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).create
-      flash.now[:notice] = t("bookings.created")
+    if Current.user.admin? && params[:booking][:blocked] == "1"
+      @booking = Bookings::BlockSchedule.new(Current.user, params[:booking][:start_on], params[:booking][:schedule_category_id]).call
+      flash.now[:notice] = t("bookings.blocked_created")
     else
-      available_resources
-      current_info
-      custom_attributes
+      @booking = Current.user.bookings.create booking_params
+
+      if @booking.persisted?
+        Bookings::BookingCustomAttributes.new(@booking, params[:custom_attribute_ids], Current.account).create
+        flash.now[:notice] = t("bookings.created")
+      else
+        available_resources
+        current_info
+        custom_attributes
+      end
     end
   end
 
@@ -36,6 +41,11 @@ class BookingsController < ApplicationController
   end
 
   def update
+    if @booking.blocked?
+      redirect_to bookings_path, alert: t("bookings.errors.cannotEditBlocked")
+      return
+    end
+
     Booking.transaction do
       @booking.resource_bookings.delete_all
       if @booking.update(booking_params)
@@ -116,6 +126,7 @@ class BookingsController < ApplicationController
       @num_bookings = info[:num_bookings]
       @participants = info[:participants]
       @schedule_name = info[:schedule_name]
+      @schedule_blocked = info[:blocked]
     end
 
     def find_bookings

@@ -10,4 +10,4 @@
           = l(day[:day], format: :day_name_number)
         %ol.mt-1.space-y-1
           - day[:bookings].each do |result|
-            = render partial: "shared/booking_card", locals: { schedule_category_name: result.schedule_category_name, schedule_category_colour: result.schedule_category_colour, participants: result.participants }
+            = render partial: "shared/booking_card", locals: { schedule_category_name: result.schedule_category_name, schedule_category_colour: result.schedule_category_colour, participants: result.participants, schedule_blocked: result.schedule_blocked }

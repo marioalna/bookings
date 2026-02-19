@@ -1,6 +1,9 @@
 .space-y-6
   %div{id: "bookings-info"}
-    = render "shared/notification", title: I18n.t("bookings.currentInfo", num_bookings: @num_bookings, participants: @participants, schedule_name: @schedule_name)
+    - if @schedule_blocked
+      = render "shared/notification", title: I18n.t("bookings.scheduleBlockedInfo", schedule_name: @schedule_name)
+    - else
+      = render "shared/notification", title: I18n.t("bookings.currentInfo", num_bookings: @num_bookings, participants: @participants, schedule_name: @schedule_name)
   = render 'shared/form_errors', errors: @booking.errors
   %div{class: form_row_class.render(columns: :three)}
     %div
@@ -10,11 +13,18 @@
       = f.collection_select_input :schedule_category_id, @schedule_categories, :first, :last, {}, { data: { booking_target: 'scheduleCategoryId', action: 'change->booking#update' } }
     %div
       = f.number_input :participants, { data: { booking_target: 'participants', action: 'change->booking#assignedDifference' } }
-  #resources-list.mt-6.grid.grid-cols-1.sm:grid-cols-2.lg:grid-cols-3.gap-4
-    = render partial: 'bookings/resource_booking', collection: @available_resources
-  %p{data: {booking_target: "message"}, class: ""}
-  .mt-6
-    #custom-attributes.flex.flex-row.flex-wrap.gap-4
-      = render partial: "bookings/custom_attributes/not_available", collection: @custom_attributes[:not_available], as: :not_available
-      = render partial: "bookings/custom_attributes/available", collection: @custom_attributes[:available], as: :available
+  - if Current.user.admin?
+    .mt-4.flex.items-center.gap-2{data: {booking_target: "blockedToggle"}}
+      = f.check_box :blocked, { data: { booking_target: 'blocked', action: 'change->booking#toggleBlocked' }, class: "h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500" }
+      = f.label :blocked, t('bookings.blockedSchedule'), class: "text-sm font-medium text-red-700"
+    %p.mt-1.text-sm.text-red-500.hidden{data: {booking_target: "blockedWarning"}}
+      = t('bookings.blockedWarning')
+  #booking-details{data: {booking_target: "bookingDetails"}}
+    #resources-list.mt-6.grid.grid-cols-1.sm:grid-cols-2.lg:grid-cols-3.gap-4
+      = render partial: 'bookings/resource_booking', collection: @available_resources
+    %p{data: {booking_target: "message"}, class: ""}
+    .mt-6
+      #custom-attributes.flex.flex-row.flex-wrap.gap-4
+        = render partial: "bookings/custom_attributes/not_available", collection: @custom_attributes[:not_available], as: :not_available
+        = render partial: "bookings/custom_attributes/available", collection: @custom_attributes[:available], as: :available
   = render 'shared/form_actions', cancel_url: '#', cancel_data: { action: 'turbo-modal#close:prevent' }

@@ -64,6 +64,21 @@ class Bookings::AvailableResourcesTest < ActiveSupport::TestCase
     assert_equal [ I18n.t("bookings.errors.invalidSchedule") ], available_resources.last
   end
 
+  test "blocked schedule returns error for regular user" do
+    blocked = bookings(:blocked_booking)
+    available_resources, errors = Bookings::AvailableResources.new(user2, blocked.start_on, blocked.schedule_category_id).call
+
+    assert_includes errors, I18n.t("bookings.errors.scheduleBlocked")
+    assert_empty available_resources
+  end
+
+  test "blocked schedule does not return error for admin" do
+    blocked = bookings(:blocked_booking)
+    _available_resources, errors = Bookings::AvailableResources.new(user, blocked.start_on, blocked.schedule_category_id).call
+
+    refute_includes errors, I18n.t("bookings.errors.scheduleBlocked")
+  end
+
   private
 
     def account

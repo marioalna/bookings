@@ -27,3 +27,10 @@ booking4_sc1:
   schedule_category: schedule_category
   start_on: <%= Date.current.beginning_of_month + 4.days  %>
   participants: 11
+
+blocked_booking:
+  user: admin
+  schedule_category: schedule_category2
+  start_on: <%= Date.current + 10.days %>
+  participants: 0
+  blocked: true

@@ -1,7 +1,7 @@
 module ResourcesHelper
   def selected_resource_booking(params, resource_booking_id)
     if params[:booking].present? && params[:booking][:resource_bookings_attributes].present?
-      return params[:booking][:resource_bookings_attributes][resource_booking_id.to_s][:resource_id]
+      return params[:booking][:resource_bookings_attributes][resource_booking_id.to_s]&.dig(:resource_id) || ""
     end
 
     return resource_booking_id if @booking&.persisted? && @booking.resource_ids.include?(resource_booking_id)

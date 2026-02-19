@@ -9,6 +9,7 @@ module Bookings
     def call
       @num_bookings = 0
       @participants = 0
+      @blocked = false
 
       @schedule_name = account.schedule_categories.find(schedule_category_id).name
 
@@ -16,9 +17,10 @@ module Bookings
       bookings.each do |booking|
         @num_bookings += 1
         @participants += booking.participants
+        @blocked = true if booking.blocked?
       end
 
-      { num_bookings: @num_bookings, participants: @participants, schedule_name: @schedule_name }
+      { num_bookings: @num_bookings, participants: @participants, schedule_name: @schedule_name, blocked: @blocked }
     end
 
     private

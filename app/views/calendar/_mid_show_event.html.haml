@@ -1,2 +1,6 @@
-%span.text-sm.text-center{class: "text-#{result.schedule_category_colour}-800"}
-  o
+- if result.schedule_blocked.to_i == 1
+  %span.text-sm.text-center.text-red-800.font-bold
+    x
+- else
+  %span.text-sm.text-center{class: "text-#{result.schedule_category_colour}-800"}
+    o

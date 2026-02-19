@@ -39,6 +39,10 @@ module Bookings
         end
 
         errors << I18n.t("bookings.errors.invalidSchedule") unless schedule_category
+
+        if errors.empty? && !current_user.admin? && account.bookings.blocked_for(date, schedule_category_id).exists?
+          errors << I18n.t("bookings.errors.scheduleBlocked")
+        end
       end
 
       def account
